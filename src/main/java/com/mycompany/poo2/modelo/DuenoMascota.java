@@ -1,5 +1,6 @@
 package com.mycompany.poo2.modelo;
 
+import com.mycompany.poo2.App;
 import com.mycompany.poo2.modelo.Persona;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -22,10 +23,13 @@ public class DuenoMascota extends Persona{
     public String toString() {
         return "DuenoMascota{" +super.toString()+ "ci=" + ci + '}';
     }
-
+    
+    public String getCi(){
+        return ci;
+        }
     //AGREGAR ECUALS
 
-    
+/*    
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -40,52 +44,40 @@ public class DuenoMascota extends Persona{
         }
         return true;
     }
-    
-    public static DuenoMascota buscarDueno(String id,String ruta){
-    DuenoMascota dueno = null;
-    InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
-        try(BufferedReader br =new BufferedReader(new InputStreamReader(input)))
-        {
-        br.readLine();
-        String line = br.readLine();
-        while (line != null){
-            String datos[]= line.split(",");
-            String ci = datos[0].strip();
-            String nombre= datos[2].strip();
-            String telefono =datos[4].strip();
-            Ciudad ciu = Ciudad.valueOf(datos[5].strip());
-            if (ci.equals(id)){
-                dueno = new DuenoMascota(ci,nombre,telefono,ciu);
-                }
-            }
-        }catch(IOException e){
-                e.printStackTrace();}
-        return dueno;
-        }
-    
-    public static ArrayList<DuenoMascota> cargarDuenos(string ruta){
+ */
+    public static ArrayList<DuenoMascota> cargarDuenos(String ruta){
         ArrayList<DuenoMascota> duenos = new ArrayList<>();
+        int intentos =0;
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
         try(BufferedReader br =new BufferedReader(new InputStreamReader(input))){
             String line = br.readLine();
-            br.readLine();
             while (line != null){
-                
-            
+                if(intentos>=1){
+                    String datos[] = line.split(",");
+                    String ci = datos[0].strip();
+                    String nombre= datos[2].strip();
+                    String telefono =datos[4].strip();
+                    Ciudad ciudad = Ciudad.buscarCiudad(Ciudad.generarCiudad(App.pathCiudades),datos[5].strip());
+                    DuenoMascota dueno = new DuenoMascota(ci,nombre,telefono,ciudad);
+                    duenos.add(dueno);
+                    }
+                intentos++;
                 }
             }catch(IOException e){
                 e.printStackTrace();}
-    }
+        return duenos;
+        }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+       public static DuenoMascota buscarDueno(ArrayList<DuenoMascota> duenos, String id){
+          DuenoMascota dueno = null;
+          for(DuenoMascota d: duenos){
+             if(id.equals(d.getCi())) {
+              dueno= d;
+                }  
+            }
+        return dueno;
+        }
+      
     }
 
 

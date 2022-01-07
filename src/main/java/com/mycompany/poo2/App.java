@@ -12,12 +12,14 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+    public static String pathPersonas = "com/mycompany/poo2/files/duenosP5.csv";
+    public static String pathMascotas = "com/mycompany/poo2/files/mascotas.csv";
+    public static String pathCiudades = "com/mycompany/poo2/files/ciudades.csv";
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("secondary"), 640, 480);
+        scene = new Scene(loadFXML("menuprincipal"), 640, 480);
         stage.setScene(scene);
         stage.show();
     }
