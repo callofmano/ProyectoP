@@ -6,7 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import java.uitl.ArrayList;
+import java.util.ArrayList;
 public class SecondaryController {
     @FXML
     TableView listaMascotas;
@@ -22,6 +22,7 @@ public class SecondaryController {
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
+    
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -31,5 +32,5 @@ public class SecondaryController {
     
     listaMascotas.getItems().setAll(Mascota.cargarMascotas(App.pathMascotas));
     }
-    
+   
 }

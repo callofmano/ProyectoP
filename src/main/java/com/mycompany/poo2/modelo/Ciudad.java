@@ -18,10 +18,10 @@ public class Ciudad {
     
     private String provinicia;
     
-    public String codigo;
+    public int codigo;
 
-    public Ciudad(String nombre, String provinicia,String codigo) {
-        this.codigo = codigo;
+    public Ciudad(String nombre, String provinicia) {
+        codigo = contador++;
         this.nombre = nombre;
         this.provinicia = provinicia;
     }
@@ -33,8 +33,10 @@ public class Ciudad {
 
     public Ciudad() {
     }
-
-    public static ArrayList<Ciudad> generarCiudad(String ruta, String n){
+    public String getNombre(){
+        return nombre;
+    }
+    public static ArrayList<Ciudad> generarCiudad(String ruta){
         ArrayList<Ciudad> ciudades = new ArrayList<>();
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
         try(BufferedReader br =new BufferedReader(new InputStreamReader(input))){
@@ -43,8 +45,7 @@ public class Ciudad {
             String datos[] = line.split(",");
             String nombre = datos[1].strip();
             String provincia = datos[2].strip();
-            String codigo = datos[0].strip();
-            Ciudad ciudad = new Ciudad(nombre,provincia,codigo);
+            Ciudad ciudad = new Ciudad(nombre,provincia);
             ciudades.add(ciudad);
             }
         }catch(IOException e){
@@ -52,5 +53,15 @@ public class Ciudad {
         return ciudades;
     }
     
+    public static Ciudad buscarCiudad( ArrayList<Ciudad> ciudades, String n){
+        Ciudad ciudad = null;
+        for(Ciudad c:ciudades){
+        if(n.equals(c.getNombre())){
+            ciudad= c;
+            }
+        }
+        
+        return ciudad;
+        }
     
 }
