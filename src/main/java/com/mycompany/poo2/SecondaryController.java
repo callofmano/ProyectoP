@@ -33,5 +33,4 @@ public class SecondaryController {
     
     listaMascotas.getItems().setAll(Mascota.cargarMascotas(App.pathMascotas));
     }
-   
 }

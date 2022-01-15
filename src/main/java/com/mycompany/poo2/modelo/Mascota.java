@@ -26,12 +26,12 @@ public class Mascota {
 
     private DuenoMascota dueno;
 
-    public Mascota(String nombre, String raza, LocalDate fechaNacimiento, String foto, int codigo, Especie especie, DuenoMascota dueno) {
+    public Mascota(String nombre, String raza, LocalDate fechaNacimiento, String foto, Especie especie, DuenoMascota dueno) {
         this.nombre = nombre;
         this.raza = raza;
         this.fechaNacimiento = fechaNacimiento;
         this.foto = foto;
-        this.codigo = codigo;
+        this.codigo = contador++;
         this.especie = especie;
         this.dueno = dueno;
     }
@@ -40,8 +40,8 @@ public class Mascota {
         return nombre;
     }
 
-    public int getCodigo() {
-        return codigo;
+    public String getCodigo() {
+        return Integer.toString(codigo);
     }
 
     public DuenoMascota getDueno() {
@@ -60,7 +60,7 @@ public class Mascota {
     public static ArrayList<Mascota> cargarMascotas(String ruta) {
         ArrayList<Mascota> mascotas = new ArrayList<>();
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
 
             String line = br.readLine();//escapar cabecera
             line = br.readLine();
@@ -68,17 +68,16 @@ public class Mascota {
 
                 String[] datos = line.split(";");
                 String nombre = datos[1].strip();
-                System.out.println(line);
                 int codigo = Integer.valueOf(datos[0].strip());
                 Especie e = Especie.valueOf(datos[2].strip().toUpperCase());
                
-                String linea2[] = datos[4].split("-");
-                LocalDate nacimiento = LocalDate.of(Integer.valueOf(linea2[0].strip()), Integer.valueOf(linea2[1].strip()), Integer.valueOf(linea2[2].strip()));
+                String linea2[] = datos[4].split("/");
+                LocalDate nacimiento = LocalDate.of(Integer.valueOf(linea2[2].strip()), Integer.valueOf(linea2[1].strip()), Integer.valueOf(linea2[0].strip()));
                 String foto = datos[5].strip();
                 String raza = datos[3].strip();
             
                 DuenoMascota dueno = DuenoMascota.buscarDueno(DuenoMascota.cargarDuenos(App.pathPersonas), datos[6].strip());
-                Mascota m = new Mascota(nombre, raza, nacimiento, foto, codigo, e, dueno);
+                Mascota m = new Mascota(nombre, raza, nacimiento, foto, e, dueno);
                 mascotas.add(m);
         
                 line = br.readLine();
@@ -86,7 +85,6 @@ public class Mascota {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.print(mascotas);
         return mascotas;
     }
 

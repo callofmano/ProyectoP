@@ -14,7 +14,7 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TableView prefHeight="167.0" prefWidth="515.0">
+      <TableView fx:id="listaDuenos" prefHeight="167.0" prefWidth="515.0">
         <columns>
           <TableColumn fx:id="colCodigo" prefWidth="60.0" text="Codigo" />
           <TableColumn fx:id="colNombre" prefWidth="101.0" text="Nombres" />

@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
@@ -34,12 +34,12 @@
                         <Insets left="50.0" />
                      </padding>
                   </Label>
-                  <TextField alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="182.0" />
+                  <TextField fx:id="txtNombre" alignment="CENTER" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="182.0" promptText="Ex: Max" />
                </children>
             </HBox>
             <HBox prefHeight="32.0" prefWidth="600.0">
                <children>
-                  <RadioButton mnemonicParsing="false" text="Perro">
+                  <RadioButton fx:id="perro" mnemonicParsing="false" text="Perro">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -50,7 +50,7 @@
                         <ToggleGroup fx:id="especie" />
                      </toggleGroup>
                   </RadioButton>
-                  <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato" toggleGroup="$especie">
+                  <RadioButton fx:id="gato" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato" toggleGroup="$especie">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -67,7 +67,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtNacimiento" promptText="yyyy-mm-dd">
                      <HBox.margin>
                         <Insets left="40.0" />
                      </HBox.margin>
@@ -84,7 +84,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtRaza">
                      <HBox.margin>
                         <Insets left="140.0" />
                      </HBox.margin>
@@ -101,24 +101,21 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Label>
-                  <ChoiceBox prefWidth="150.0">
+                  <ComboBox fx:id="comboDueno" onAction="#comboboxEvent" prefWidth="150.0">
                      <HBox.margin>
-                        <Insets left="130.0" />
+                        <Insets left="131.0" />
                      </HBox.margin>
-                  </ChoiceBox>
+                  </ComboBox>
                </children>
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="195.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="163.0">
                <children>
-                  <ChoiceBox prefHeight="25.0" prefWidth="117.0">
+                  <ComboBox fx:id="comboFoto" prefWidth="150.0">
                      <HBox.margin>
-                        <Insets left="30.0" />
+                        <Insets />
                      </HBox.margin>
-                     <padding>
-                        <Insets left="400.0" />
-                     </padding>
-                  </ChoiceBox>
-                  <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" text="Foto:">
+                  </ComboBox>
+                  <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="45.0" text="Foto:">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -133,7 +130,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="227.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="48.0" prefWidth="600.0">
                <children>
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="botonGuardar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </HBox.margin>
@@ -141,7 +138,7 @@
                         <Font name="Arial" size="14.0" />
                      </font>
                   </Button>
-                  <Button contentDisplay="CENTER" onAction="#switchToSecondary" mnemonicParsing="false" text="Cancelar">
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#switchToSecondary" text="Cancelar">
                      <HBox.margin>
                         <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                      </HBox.margin>

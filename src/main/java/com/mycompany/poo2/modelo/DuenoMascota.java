@@ -3,6 +3,7 @@ package com.mycompany.poo2.modelo;
 import com.mycompany.poo2.App;
 import com.mycompany.poo2.modelo.Persona;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 public class DuenoMascota extends Persona {
 
     public String ci;
-
+    
     public DuenoMascota(String ci, String nombre, String telefono, Ciudad ciudad, String apellidos) {
         super(nombre, telefono, ciudad,apellidos);
         this.ci = ci;
@@ -65,7 +66,7 @@ public class DuenoMascota extends Persona {
         ArrayList<DuenoMascota> duenos = new ArrayList<>();
         int intentos = 0;
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
-        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
             String line = br.readLine();
             line = br.readLine();
             while (line != null) {
@@ -96,5 +97,4 @@ public class DuenoMascota extends Persona {
         }
         return dueno;
     }
-
 }

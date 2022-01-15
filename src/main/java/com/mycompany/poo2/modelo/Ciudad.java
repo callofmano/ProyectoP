@@ -1,6 +1,6 @@
 package com.mycompany.poo2.modelo;
 
-import java.io.InputStream;
+import java.io.*;
 import com.mycompany.poo2.modelo.Persona;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,19 +16,19 @@ public class Ciudad {
     
     private String nombre;
     
-    private String provinicia;
+    private String provincia;
     
     public int codigo;
 
     public Ciudad(String nombre, String provinicia) {
-        codigo = contador++;
+        this.codigo = contador++;
         this.nombre = nombre;
-        this.provinicia = provinicia;
+        this.provincia = provinicia;
     }
 
     @Override
     public String toString() {
-        return "Ciudad{" + "nombre=" + nombre +'}';
+        return nombre ;
     }
 
     public Ciudad() {
@@ -36,10 +36,16 @@ public class Ciudad {
     public String getNombre(){
         return nombre;
     }
+    public String getProvincia(){
+        return provincia;
+        }
+    public String getCodigo(){
+        return Integer.toString(contador);
+        }
     public static ArrayList<Ciudad> generarCiudad(String ruta){
         ArrayList<Ciudad> ciudades = new ArrayList<>();
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
-        try(BufferedReader br =new BufferedReader(new InputStreamReader(input))){
+        try(BufferedReader br =new BufferedReader(new FileReader(ruta))){
         String line = br.readLine();
         while (line != null){
             String datos[] = line.split(",");

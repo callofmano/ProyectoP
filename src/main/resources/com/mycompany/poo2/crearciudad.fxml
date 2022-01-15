@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.CrearciudadController">
    <children>
       <VBox prefHeight="399.0" prefWidth="582.0">
@@ -33,7 +32,7 @@
                         <Insets left="75.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtNombre">
                      <HBox.margin>
                         <Insets left="150.0" />
                      </HBox.margin>
@@ -53,7 +52,7 @@
                         <Insets left="75.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0">
+                  <ComboBox fx:id="comboProvincia" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="138.0" />
                      </HBox.margin>
@@ -65,7 +64,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="botonGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>

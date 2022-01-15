@@ -21,11 +21,11 @@
                   <Insets left="160.0" />
                </VBox.margin>
             </Label>
-            <TableView prefHeight="278.0" prefWidth="511.0">
+            <TableView fx:id="listaCiudades" prefHeight="278.0" prefWidth="511.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Código" />
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                  <TableColumn prefWidth="75.0" text="Provincia" />
+                <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Código" />
+                <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+                  <TableColumn fx:id="colProvincia" prefWidth="75.0" text="Provincia" />
                   <TableColumn prefWidth="75.0" text="Opciones" />
               </columns>
                <VBox.margin>

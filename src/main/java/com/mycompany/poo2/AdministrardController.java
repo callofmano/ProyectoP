@@ -5,7 +5,6 @@
  */
 package com.mycompany.poo2;
 import com.mycompany.poo2.modelo.DuenoMascota;
-import com.mycompany.poo2.modelo.Mascota;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;

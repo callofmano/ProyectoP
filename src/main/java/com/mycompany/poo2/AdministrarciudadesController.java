@@ -20,18 +20,25 @@ import javafx.event.ActionEvent;
  */
 public class AdministrarciudadesController {
     @FXML
+    TableView listaCiudades;
+    @FXML
+    private TableColumn<Ciudad,String> colCodigo;
+    @FXML
+    private TableColumn<Ciudad,String> colNombre;
+    @FXML
+    private TableColumn<Ciudad,String> colProvincia;
+    @FXML
     private void switchToCrearCiudad() throws IOException {
         App.setRoot("crearciudad");
     }
-    /*
+    
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
     colNombre.setCellValueFactory(new  PropertyValueFactory<>("nombre"));
-    colTipo.setCellValueFactory(new  PropertyValueFactory<>("especie"));
-    colDueno.setCellValueFactory(new  PropertyValueFactory<>("dueno"));
-    
-    listaMascotas.getItems().setAll(Mascota.cargarMascotas(App.pathMascotas));
+    colProvincia.setCellValueFactory(new  PropertyValueFactory<>("provincia"));
+  
+    listaCiudades.getItems().setAll(Ciudad.generarCiudad(App.pathCiudades));
     }
-   */
+   
 }

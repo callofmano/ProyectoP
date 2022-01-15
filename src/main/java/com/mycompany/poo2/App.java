@@ -12,9 +12,9 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-    public static String pathPersonas = "com/mycompany/poo2/files/duenosP5.csv";
-    public static String pathMascotas = "com/mycompany/poo2/files/mascotas.csv";
-    public static String pathCiudades = "com/mycompany/poo2/files/ciudades.csv";
+    public static String pathPersonas = "archivo/duenosP5.csv";
+    public static String pathMascotas = "archivo/mascotas.csv";
+    public static String pathCiudades = "archivo/ciudades.csv";
     private static Scene scene;
 
     @Override
