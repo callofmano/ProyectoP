@@ -28,7 +28,7 @@ public class DuenoMascota extends Persona{
         return ci;
         }
     //AGREGAR ECUALS
-
+    //probando git
 /*    
     @Override
     public boolean equals(Object obj) {
