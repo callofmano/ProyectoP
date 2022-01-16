@@ -1,6 +1,6 @@
 ﻿id;nombre;tipo;raza;fecha_nac;foto;id_dueno
-1;Max;perro;chow chow;1/1/2015;max.jpg;1
-2;Chato;perro;carlino;1/1/2015;chato.jpg;2
+1;Max;perro;chow chow;1/1/2015;max.png;1
+2;Chato;perro;carlino;1/1/2015;chato.png;2
 3;Harpo;perro;pug;1/1/2015;harpo.png;3
 4;Chaval;perro;golden;1/1/2015;chaval.png;4
 5;Harry;perro;labrador;1/1/2015;harry.png;5

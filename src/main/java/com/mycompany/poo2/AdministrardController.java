@@ -33,7 +33,10 @@ public class AdministrardController {
     private void switchToCreard() throws IOException {
         App.setRoot("creard");
     }
-
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+    }
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("ci"));

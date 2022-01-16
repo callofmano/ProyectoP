@@ -17,4 +17,8 @@ public class AdministraraController {
     private void switchToCrearAuspiciante() throws IOException {
         App.setRoot("crearauspiciantes");
     }
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+    }
 }

@@ -45,6 +45,7 @@ public class PrimaryController {
             }
         comboDueno.getItems().addAll(duenos);
         botonRegresar.setVisible(false);
+
         }
     @FXML
     private void comboboxEvent (ActionEvent e){
