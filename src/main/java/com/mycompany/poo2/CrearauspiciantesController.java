@@ -27,14 +27,17 @@ public class CrearauspiciantesController {
     @FXML
     private TextField txtNombre,txtDireccion,txtTelefono,txtEmail,txtWebPage,txtApellidos;
     @FXML
-    private Button botonGuardar;
+    private Button botonGuardar,botonRegresar;
     @FXML
     private ComboBox <String>comboCiudad;
     @FXML
     private void switchToAdministrarAuspiciantes() throws IOException {
         App.setRoot("administrara");
     }
-
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+        }
     @FXML
     private void initialize(){
         ArrayList <String> ciudades = new ArrayList<>();
@@ -42,6 +45,7 @@ public class CrearauspiciantesController {
             ciudades.add(d.getNombre());
             }
         comboCiudad.getItems().addAll(ciudades);
+        botonRegresar.setVisible(false);
     }
 
     @FXML
@@ -62,15 +66,17 @@ public class CrearauspiciantesController {
         Auspiciante auspiciante = new Auspiciante(email,webPage,nombre,telefono,ciudad,apellidos);
 
         try{
-            FileWriter writer = new FileWriter("archivos/auspiciantes",true);
+            FileWriter writer = new FileWriter(App.pathAuspiciantes,true);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
             bufferedWriter.write("\n");
+            String linea = auspiciante.getCodigo()+","+ auspiciante.getNombre()+","+auspiciante.getApellido()+","+auspiciante.getTelefono()+","+auspiciante.getCiudad()+","+auspiciante.getEmail()+","+auspiciante.getWebpage();
+            bufferedWriter.write(linea);
+            bufferedWriter.close();
+            botonRegresar.setVisible(true);
         }
         catch( IOException e1){
             e1.printStackTrace();
         }
-
-
         });
     }
 }

@@ -161,14 +161,19 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="botonGuardar" mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="botonGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                      <HBox.margin>
                         <Insets left="180.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#switchToAdministrarAuspiciantes" text="Cancelar">
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar al Menú">
+                     <HBox.margin>
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
                </children>
