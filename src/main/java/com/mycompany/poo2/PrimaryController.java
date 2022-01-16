@@ -20,14 +20,21 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 public class PrimaryController {
+<<<<<<< HEAD
     @FXML
     Alert alert = new Alert(AlertType.INFORMATION);
+=======
+
+    String editType;
+>>>>>>> d9521ebfc5bb00ef2288284045076efdca20f934
     String nombre;
     String nacimiento;
     String raza;
+    private Stage thistage;
     @FXML
     private RadioButton perro,gato;
     @FXML
@@ -40,6 +47,7 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+    
     @FXML
     private void initialize(){
     
@@ -54,6 +62,7 @@ public class PrimaryController {
         alert.setContentText("Usted ha creado una mascota");
 
         }
+
     @FXML
     private void comboboxEvent (ActionEvent e){
         Object evt =e.getSource();
@@ -104,9 +113,22 @@ public class PrimaryController {
         catch(IOException er){
             er.printStackTrace();
         }
+
         
+
+
         });
+
+        
+
+
     }
+
+
+    
+    
+
+
 
     @FXML
     private void switchToMenuPrincipal() throws IOException{

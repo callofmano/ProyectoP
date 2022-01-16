@@ -37,6 +37,17 @@ public class SecondaryController {
     private void switchToMenuPrincipal() throws IOException{
         App.setRoot("menuprincipal");
     }
+    public void switchToEdit() throws IOException{
+
+        App.setRoot("primary");
+        
+    }
+    public void switchToDetalleMascota() throws IOException{
+
+        App.setRoot("detalleMascota");
+        
+    }
+
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
