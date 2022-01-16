@@ -18,12 +18,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 public class PrimaryController {
+
+    String editType;
     String nombre;
     String nacimiento;
     String raza;
+    private Stage thistage;
     @FXML
     private RadioButton perro,gato;
     @FXML
@@ -36,6 +40,7 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+    
     @FXML
     private void initialize(){
     
@@ -47,6 +52,7 @@ public class PrimaryController {
         botonRegresar.setVisible(false);
 
         }
+
     @FXML
     private void comboboxEvent (ActionEvent e){
         Object evt =e.getSource();
@@ -95,9 +101,22 @@ public class PrimaryController {
         catch(IOException er){
             er.printStackTrace();
         }
+
         
+
+
         });
+
+        
+
+
     }
+
+
+    
+    
+
+
 
     @FXML
     private void switchToMenuPrincipal() throws IOException{

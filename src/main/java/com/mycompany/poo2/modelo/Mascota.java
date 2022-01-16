@@ -1,15 +1,20 @@
 package com.mycompany.poo2.modelo;
 
 import com.mycompany.poo2.App;
+import com.mycompany.poo2.PrimaryController;
+import com.mycompany.poo2.SecondaryController;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
+import javafx.scene.layout.Pane;
 
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class Mascota {
 
@@ -44,6 +49,61 @@ public class Mascota {
         this.button = new Button("Editar");
         this.detalle = new Button("Detalle");
         this.eliminar = new Button("Eliminar");
+
+        /*detalle.setOnAction((ActionEvent ev)->{
+            TextInputDialog dialogo1 = new TextInputDialog();
+            dialogo1.setTitle("PROBANDO123 FUNCIONANDO ****");
+        });*/
+        button.setOnMouseClicked(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event arg0) {
+                System.out.println(codigo+","+nombre);
+
+                SecondaryController sc = new SecondaryController();
+
+                    try {
+                        sc.switchToEdit();                  //con esto se carga la pantalla de crear mascota, que será reutilizada para editar 
+                    } catch (IOException e) {
+                        
+                        e.printStackTrace();
+                    }   
+            }
+            
+        });
+
+
+        detalle.setOnMouseClicked(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event arg0) {
+                System.out.println(codigo+","+nombre);
+
+                SecondaryController sc = new SecondaryController();
+
+                    try {
+                        sc.switchToDetalleMascota();                  //con esto se carga la pantalla de detalle mascota
+                    } catch (IOException e) {
+                        
+                        e.printStackTrace();
+                    }   
+            }
+            
+        });
+
+        eliminar.setOnMouseClicked(new EventHandler<Event>() {
+
+            @Override
+            public void handle(Event arg0) {
+                System.out.println(codigo+","+nombre);
+
+                SecondaryController sc = new SecondaryController();
+
+                    //TODO AÑADIR PANTALLA PARA ELIMINAR   
+            }
+            
+        });
+
     }
 
     public String getNombre() {

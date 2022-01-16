@@ -13,7 +13,7 @@
    <children>
       <VBox prefHeight="400.0" prefWidth="610.0">
          <children>
-            <Label text="Administrar Mascota" underline="true">
+            <Label fx:id="labelTitulo" text="Administrar Mascota" underline="true">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -28,8 +28,8 @@
                   <TableColumn fx:id="colTipo" prefWidth="74.0" text="Tipo" />
                   <TableColumn fx:id="colDueno" prefWidth="101.60003662109375" text="Dueño" />
                   <TableColumn fx:id="colAcciones" prefWidth="76.0" text="" />
-                  <TableColumn fx:id="colDetalle" prefWidth="72.0" text=""  />
-                  <TableColumn fx:id="colEliminar" prefWidth="76.0000122070312"  text="" />
+                  <TableColumn fx:id="colDetalle" prefWidth="72.0" />
+                  <TableColumn fx:id="colEliminar" prefWidth="76.0000122070312" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />
