@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-//probando martin master
+//probando martin master version 2
 /**
  * JavaFX App
  */
