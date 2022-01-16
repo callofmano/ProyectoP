@@ -26,7 +26,10 @@
                 <TableColumn fx:id="colCodigo" prefWidth="87.0" text="Codigo" />
                 <TableColumn fx:id="colNombre" prefWidth="112.0" text="Nombre" />
                   <TableColumn fx:id="colTipo" prefWidth="74.0" text="Tipo" />
-                  <TableColumn fx:id="colDueno" prefWidth="125.0" text="Dueño" />
+                  <TableColumn fx:id="colDueno" prefWidth="101.60003662109375" text="Dueño" />
+                  <TableColumn fx:id="colAcciones" prefWidth="76.0" text="" />
+                  <TableColumn fx:id="colDetalle" prefWidth="72.0" text=""  />
+                  <TableColumn fx:id="colEliminar" prefWidth="76.0000122070312"  text="" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />
