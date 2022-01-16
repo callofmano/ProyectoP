@@ -24,13 +24,13 @@ import javafx.stage.Stage;
 
 
 public class PrimaryController {
-<<<<<<< HEAD
+
     @FXML
     Alert alert = new Alert(AlertType.INFORMATION);
-=======
+
 
     String editType;
->>>>>>> d9521ebfc5bb00ef2288284045076efdca20f934
+
     String nombre;
     String nacimiento;
     String raza;
