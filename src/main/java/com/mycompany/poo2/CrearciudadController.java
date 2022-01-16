@@ -38,7 +38,7 @@ public class CrearciudadController {
     @FXML
     private ComboBox <String> comboProvincia;
     @FXML
-    private Button botonGuardar; 
+    private Button botonGuardar,botonRegresar; 
     @FXML 
     private void switchToAdministarCiudades() throws IOException {
         App.setRoot("administrarciudades");
@@ -51,9 +51,12 @@ public class CrearciudadController {
             ciudades.add(d.getProvincia());
             }
         comboProvincia.getItems().addAll(ciudades);
-        
+        botonRegresar.setVisible(false);
         }
-    
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+        }
     @FXML
     private void guardar(ActionEvent event){
     
@@ -69,6 +72,7 @@ public class CrearciudadController {
             String linea = ciudad.getCodigo()+","+ciudad.getNombre()+","+ciudad.getProvincia();
             bufferedWriter.write(linea);
             bufferedWriter.close();
+            botonRegresar.setVisible(true);
             }
         catch(IOException e1){
             e1.printStackTrace();

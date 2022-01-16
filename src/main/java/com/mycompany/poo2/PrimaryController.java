@@ -27,7 +27,7 @@ public class PrimaryController {
     @FXML
     private RadioButton perro,gato;
     @FXML
-    private Button botonGuardar;
+    private Button botonGuardar,botonRegresar;
     @FXML
     private ComboBox <String> comboDueno, comboFoto;
     @FXML
@@ -44,7 +44,7 @@ public class PrimaryController {
             duenos.add(d.getNombre());
             }
         comboDueno.getItems().addAll(duenos);
-    
+        botonRegresar.setVisible(false);
         }
     @FXML
     private void comboboxEvent (ActionEvent e){
@@ -89,11 +89,17 @@ public class PrimaryController {
                     bufferedWriter.write(linea);
                     System.out.print(linea);
                     bufferedWriter.close();
+                    botonRegresar.setVisible(true);
                     }
         catch(IOException er){
             er.printStackTrace();
         }
+        
         });
+    }
 
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
     }
 }

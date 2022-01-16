@@ -148,6 +148,11 @@
                   </Button>
                </children>
             </HBox>
+            <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="23.0" prefWidth="87.0" text="Regresar ">
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>

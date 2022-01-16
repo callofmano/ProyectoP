@@ -25,7 +25,7 @@ public class CreardController {
     @FXML
     private ComboBox <String> comboCiudad;
     @FXML
-    private Button botonGuardar;
+    private Button botonGuardar,botonRegresar;
     @FXML
     private void switchToAdministrarDuenos() throws IOException {
         App.setRoot("administrard");
@@ -38,8 +38,12 @@ public class CreardController {
             ciudades.add(d.getNombre());
             }
         comboCiudad.getItems().addAll(ciudades);
+        botonRegresar.setVisible(false);
         }
-    
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+        }
     @FXML
     private void guardar(ActionEvent event) throws IOException{
     
@@ -65,6 +69,7 @@ public class CreardController {
             String linea = ci+","+apellidos+","+nombres+","+","+direccion+","+telefono+","+ciudad_comboBox+","+email;
             bufferedWriter.write(linea);
             bufferedWriter.close();
+            botonRegresar.setVisible(true);
             }
         catch(IOException e1){
             e1.printStackTrace();

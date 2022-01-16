@@ -23,7 +23,10 @@ public class SecondaryController {
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
-    
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+    }
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));

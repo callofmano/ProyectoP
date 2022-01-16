@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 /**
@@ -16,7 +15,6 @@ public class App extends Application {
     public static String pathMascotas = "archivo/mascotas.csv";
     public static String pathCiudades = "archivo/ciudades.csv";
     private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("menuprincipal"), 640, 480);

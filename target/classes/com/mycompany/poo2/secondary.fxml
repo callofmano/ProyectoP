@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.SecondaryController">
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.SecondaryController">
    <children>
       <VBox prefHeight="400.0" prefWidth="610.0">
          <children>
@@ -30,6 +30,7 @@
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />
+            <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="23.0" prefWidth="637.0" text="Menu Principal" />
          </children>
       </VBox>
    </children>
