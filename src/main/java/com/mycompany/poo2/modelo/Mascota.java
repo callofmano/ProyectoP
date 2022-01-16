@@ -1,6 +1,9 @@
 package com.mycompany.poo2.modelo;
 
 import com.mycompany.poo2.App;
+
+import javafx.scene.control.Button;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
@@ -26,6 +29,10 @@ public class Mascota {
 
     private DuenoMascota dueno;
 
+    public Button button;
+    public Button detalle;
+    public Button eliminar;
+
     public Mascota(String nombre, String raza, LocalDate fechaNacimiento, String foto, Especie especie, DuenoMascota dueno) {
         this.nombre = nombre;
         this.raza = raza;
@@ -34,6 +41,9 @@ public class Mascota {
         this.codigo = contador++;
         this.especie = especie;
         this.dueno = dueno;
+        this.button = new Button("Editar");
+        this.detalle = new Button("Detalle");
+        this.eliminar = new Button("Eliminar");
     }
 
     public String getNombre() {
@@ -50,6 +60,34 @@ public class Mascota {
 
     public Especie getEspecie() {
         return especie;
+    }
+
+
+    
+
+
+    public Button getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(Button detalle) {
+        this.detalle = detalle;
+    }
+
+    public Button getEliminar() {
+        return eliminar;
+    }
+
+    public void setEliminar(Button eliminar) {
+        this.eliminar = eliminar;
+    }
+
+    public Button getButton() {
+        return button;
+    }
+
+    public void setButton(Button button) {
+        this.button = button;
     }
 
     @Override

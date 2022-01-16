@@ -3,9 +3,13 @@ import com.mycompany.poo2.modelo.Mascota;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Callback;
+
 import java.util.ArrayList;
 
 public class SecondaryController {
@@ -20,6 +24,12 @@ public class SecondaryController {
     @FXML
     private TableColumn<Mascota,String> colDueno;
     @FXML
+    private TableColumn<Mascota,String> colAcciones;
+    @FXML
+    private TableColumn<Mascota,String> colDetalle;
+    @FXML
+    private TableColumn<Mascota,String> colEliminar;
+    @FXML
     private void switchToPrimary() throws IOException {
         App.setRoot("primary");
     }
@@ -33,7 +43,15 @@ public class SecondaryController {
     colNombre.setCellValueFactory(new  PropertyValueFactory<>("nombre"));
     colTipo.setCellValueFactory(new  PropertyValueFactory<>("especie"));
     colDueno.setCellValueFactory(new  PropertyValueFactory<>("dueno"));
-    
+    colAcciones.setCellValueFactory(
+        new PropertyValueFactory<Mascota,String>("button")
+    );
+    colDetalle.setCellValueFactory(
+        new PropertyValueFactory<Mascota,String>("detalle")
+    );
+    colEliminar.setCellValueFactory(
+        new PropertyValueFactory<Mascota,String>("eliminar")
+    );
     listaMascotas.getItems().setAll(Mascota.cargarMascotas(App.pathMascotas));
     }
 }
