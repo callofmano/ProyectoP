@@ -19,11 +19,15 @@ import java.util.ArrayList;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 /**
  *
  * @author User
  */
 public class CrearauspiciantesController {
+    @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
     @FXML
     private TextField txtNombre,txtDireccion,txtTelefono,txtEmail,txtWebPage,txtApellidos;
     @FXML
@@ -46,6 +50,8 @@ public class CrearauspiciantesController {
             }
         comboCiudad.getItems().addAll(ciudades);
         botonRegresar.setVisible(false);
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado un auspiciante");
     }
 
     @FXML
@@ -72,6 +78,7 @@ public class CrearauspiciantesController {
             String linea = auspiciante.getCodigo()+","+ auspiciante.getNombre()+","+auspiciante.getApellido()+","+auspiciante.getTelefono()+","+auspiciante.getCiudad()+","+auspiciante.getEmail()+","+auspiciante.getWebpage();
             bufferedWriter.write(linea);
             bufferedWriter.close();
+            alert.showAndWait();
             botonRegresar.setVisible(true);
         }
         catch( IOException e1){

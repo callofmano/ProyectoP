@@ -28,11 +28,15 @@ import com.mycompany.poo2.modelo.Ciudad;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 /**
  *
  * @author User
  */
 public class CrearciudadController {
+    @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
     @FXML
     private TextField txtNombre;
     @FXML
@@ -52,6 +56,8 @@ public class CrearciudadController {
             }
         comboProvincia.getItems().addAll(ciudades);
         botonRegresar.setVisible(false);
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado una ciudad");
         }
     @FXML
     private void switchToMenuPrincipal() throws IOException{
@@ -73,6 +79,7 @@ public class CrearciudadController {
             bufferedWriter.write(linea);
             bufferedWriter.close();
             botonRegresar.setVisible(true);
+            alert.showAndWait();
             }
         catch(IOException e1){
             e1.printStackTrace();

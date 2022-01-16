@@ -19,7 +19,11 @@ import javafx.scene.control.Button;
 import java.util.ArrayList;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 public class CreardController {
+    @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
     @FXML
     private TextField txtNombre,txtApellidos,txtCi,txtTelefono,txtDireccion,txtEmail;
     @FXML
@@ -39,6 +43,8 @@ public class CreardController {
             }
         comboCiudad.getItems().addAll(ciudades);
         botonRegresar.setVisible(false);
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado un dueño");
         }
     @FXML
     private void switchToMenuPrincipal() throws IOException{
@@ -69,6 +75,7 @@ public class CreardController {
             String linea = ci+","+apellidos+","+nombres+","+","+direccion+","+telefono+","+ciudad_comboBox+","+email;
             bufferedWriter.write(linea);
             bufferedWriter.close();
+            alert.showAndWait();
             botonRegresar.setVisible(true);
             }
         catch(IOException e1){

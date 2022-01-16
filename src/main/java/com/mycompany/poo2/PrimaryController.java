@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import java.util.ArrayList;
@@ -21,6 +23,8 @@ import javafx.scene.input.MouseEvent;
 
 
 public class PrimaryController {
+    @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
     String nombre;
     String nacimiento;
     String raza;
@@ -45,6 +49,9 @@ public class PrimaryController {
             }
         comboDueno.getItems().addAll(duenos);
         botonRegresar.setVisible(false);
+        alert.setTitle("Dialogo de información");
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado una mascota");
 
         }
     @FXML
@@ -90,7 +97,9 @@ public class PrimaryController {
                     bufferedWriter.write(linea);
                     System.out.print(linea);
                     bufferedWriter.close();
+                    alert.showAndWait();
                     botonRegresar.setVisible(true);
+
                     }
         catch(IOException er){
             er.printStackTrace();
