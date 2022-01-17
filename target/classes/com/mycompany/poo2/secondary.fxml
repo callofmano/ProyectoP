@@ -9,19 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.SecondaryController">
-   <children>
-      <VBox prefHeight="400.0" prefWidth="610.0">
-         <children>
-            <Label text="Administrar Mascota" underline="true">
-=======
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.SecondaryController">
    <children>
       <VBox prefHeight="400.0" prefWidth="610.0">
          <children>
             <Label fx:id="labelTitulo" text="Administrar Mascota" underline="true">
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -31,15 +23,6 @@
             </Label>
             <TableView fx:id="listaMascotas" prefHeight="400.0" prefWidth="593.0">
               <columns>
-<<<<<<< HEAD
-                <TableColumn fx:id="colCodigo" prefWidth="87.0" text="Codigo" />
-                <TableColumn fx:id="colNombre" prefWidth="112.0" text="Nombre" />
-                  <TableColumn fx:id="colTipo" prefWidth="74.0" text="Tipo" />
-                  <TableColumn fx:id="colDueno" prefWidth="125.0" text="Dueño" />
-              </columns>
-            </TableView>
-            <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />
-=======
                 <TableColumn fx:id="colCodigo" prefWidth="52.79998701810837" text="Codigo" />
                 <TableColumn fx:id="colNombre" prefWidth="126.40002822875977" text="Nombre" />
                   <TableColumn fx:id="colTipo" prefWidth="95.19999694824219" text="Tipo" />
@@ -49,7 +32,6 @@
             </TableView>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />
             <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="23.0" prefWidth="637.0" text="Menu Principal" />
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
          </children>
       </VBox>
    </children>

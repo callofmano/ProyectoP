@@ -67,10 +67,7 @@
             </Button>
          </children>
       </HBox>
-<<<<<<< HEAD
-=======
       <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar Menú" />
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
     </children>
     <padding>
         <Insets bottom="20.0" left="20.0" right="50.0" top="20.0" />

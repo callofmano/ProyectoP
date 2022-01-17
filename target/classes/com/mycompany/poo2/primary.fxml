@@ -12,19 +12,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.PrimaryController">
-   <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-         <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="599.0" text="Crear Mascota" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true">
-=======
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
             <Label fx:id="labeltitulo" alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="599.0" text="Crear Mascota" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS" underline="true">
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                <font>
                   <Font name="System Bold" size="31.0" />
                </font>
@@ -54,16 +46,6 @@
                      <HBox.margin>
                         <Insets left="250.0" />
                      </HBox.margin>
-<<<<<<< HEAD
-                     <toggleGroup>
-                        <ToggleGroup fx:id="especie" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="gato" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato" toggleGroup="$especie">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-=======
                   </RadioButton>
                   <RadioButton fx:id="gato" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato">
                      <font>
@@ -72,7 +54,6 @@
                      <toggleGroup>
                         <ToggleGroup fx:id="especie" />
                      </toggleGroup>
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                   </RadioButton>
                </children>
             </HBox>
@@ -167,14 +148,11 @@
                   </Button>
                </children>
             </HBox>
-<<<<<<< HEAD
-=======
             <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="23.0" prefWidth="87.0" text="Regresar ">
                <VBox.margin>
                   <Insets left="250.0" />
                </VBox.margin>
             </Button>
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
          </children>
       </VBox>
    </children>

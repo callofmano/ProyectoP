@@ -40,14 +40,11 @@
                   <Insets left="230.0" top="20.0" />
                </VBox.margin>
             </Button>
-<<<<<<< HEAD
-=======
             <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="26.0" prefWidth="124.0" text="Menú Principal">
                <VBox.margin>
                   <Insets left="230.0" />
                </VBox.margin>
             </Button>
->>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
          </children>
       </VBox>
    </children>
