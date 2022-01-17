@@ -6,7 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-//probando maykoll 123
+//probando maykoll commit
 /**
  * JavaFX App
  */
