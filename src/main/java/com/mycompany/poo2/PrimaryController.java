@@ -123,7 +123,9 @@ public class PrimaryController {
 
 
     }
-
+    public void llenarCampos(Mascota m){
+        txtNombre.setText(m.getNombre());
+    }
 
     
     

@@ -34,9 +34,7 @@ public class Mascota {
 
     private DuenoMascota dueno;
 
-    public Button button;
-    public Button detalle;
-    public Button eliminar;
+
 
     public Mascota(String nombre, String raza, LocalDate fechaNacimiento, String foto, Especie especie, DuenoMascota dueno) {   //ESTE CONSTRUCTOR SIRVE PARA CREAR
         this.nombre = nombre;
@@ -46,15 +44,13 @@ public class Mascota {
         this.codigo = contador++;
         this.especie = especie;
         this.dueno = dueno;
-        this.button = new Button("Editar");
-        this.detalle = new Button("Detalle");
-        this.eliminar = new Button("Eliminar");
+
 
         /*detalle.setOnAction((ActionEvent ev)->{
             TextInputDialog dialogo1 = new TextInputDialog();
             dialogo1.setTitle("PROBANDO123 FUNCIONANDO ****");
         });*/
-        setteoBotones();   //carga los botones y su funcionalidad
+           //carga los botones y su funcionalidad
     }
 
     
@@ -68,10 +64,8 @@ public class Mascota {
         this.codigo = codigo;
         this.raza = raza;
         this.dueno = dueno;
-        this.button = new Button("Editar");
-        this.detalle = new Button("Detalle");
-        this.eliminar = new Button("Eliminar");
-        setteoBotones();
+
+        
     }
 
 
@@ -96,29 +90,7 @@ public class Mascota {
     
 
 
-    public Button getDetalle() {
-        return detalle;
-    }
 
-    public void setDetalle(Button detalle) {
-        this.detalle = detalle;
-    }
-
-    public Button getEliminar() {
-        return eliminar;
-    }
-
-    public void setEliminar(Button eliminar) {
-        this.eliminar = eliminar;
-    }
-
-    public Button getButton() {
-        return button;
-    }
-
-    public void setButton(Button button) {
-        this.button = button;
-    }
 
     @Override
     public String toString() {
@@ -162,57 +134,6 @@ public class Mascota {
         return mascotas;
     }
 
-    public void setteoBotones(){
-        button.setOnMouseClicked(new EventHandler<Event>() {
 
-            @Override
-            public void handle(Event arg0) {
-                System.out.println(codigo+","+nombre);
-
-                SecondaryController sc = new SecondaryController();
-
-                    try {
-                        sc.switchToEdit();                  //con esto se carga la pantalla de crear mascota, que será reutilizada para editar 
-                    } catch (IOException e) {
-                        
-                        e.printStackTrace();
-                    }   
-            }
-            
-        });
-
-
-        detalle.setOnMouseClicked(new EventHandler<Event>() {
-
-            @Override
-            public void handle(Event arg0) {
-                System.out.println(codigo+","+nombre);
-
-                SecondaryController sc = new SecondaryController();
-
-                    try {
-                        sc.switchToDetalleMascota();                  //con esto se carga la pantalla de detalle mascota
-                    } catch (IOException e) {
-                        
-                        e.printStackTrace();
-                    }   
-            }
-            
-        });
-
-        eliminar.setOnMouseClicked(new EventHandler<Event>() {
-
-            @Override
-            public void handle(Event arg0) {
-                System.out.println(codigo+","+nombre);
-
-                SecondaryController sc = new SecondaryController();
-
-                    //TODO AÑADIR PANTALLA PARA ELIMINAR   
-            }
-            
-        });
-
-    }
 
 }

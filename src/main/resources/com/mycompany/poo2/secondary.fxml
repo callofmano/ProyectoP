@@ -23,13 +23,11 @@
             </Label>
             <TableView fx:id="listaMascotas" prefHeight="400.0" prefWidth="593.0">
               <columns>
-                <TableColumn fx:id="colCodigo" prefWidth="87.0" text="Codigo" />
-                <TableColumn fx:id="colNombre" prefWidth="112.0" text="Nombre" />
-                  <TableColumn fx:id="colTipo" prefWidth="74.0" text="Tipo" />
-                  <TableColumn fx:id="colDueno" prefWidth="101.60003662109375" text="Dueño" />
-                  <TableColumn fx:id="colAcciones" prefWidth="76.0" text="" />
-                  <TableColumn fx:id="colDetalle" prefWidth="72.0" />
-                  <TableColumn fx:id="colEliminar" prefWidth="76.0000122070312" />
+                <TableColumn fx:id="colCodigo" prefWidth="52.79998701810837" text="Codigo" />
+                <TableColumn fx:id="colNombre" prefWidth="126.40002822875977" text="Nombre" />
+                  <TableColumn fx:id="colTipo" prefWidth="95.19999694824219" text="Tipo" />
+                  <TableColumn fx:id="colDueno" prefWidth="133.5999755859375" text="Dueño" />
+                  <TableColumn fx:id="colAcciones" prefWidth="193.5999755859375" text="" />
               </columns>
             </TableView>
             <Button mnemonicParsing="false" onAction="#switchToPrimary" prefHeight="25.0" prefWidth="659.0" text="Agregar Mascota" />

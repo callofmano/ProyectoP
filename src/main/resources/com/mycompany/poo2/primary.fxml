@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.PrimaryController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/estilos.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -46,14 +46,14 @@
                      <HBox.margin>
                         <Insets left="250.0" />
                      </HBox.margin>
-                     <toggleGroup>
-                        <ToggleGroup fx:id="especie" />
-                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="gato" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato" toggleGroup="$especie">
+                  <RadioButton fx:id="gato" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Gato">
                      <font>
                         <Font size="15.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="especie" />
+                     </toggleGroup>
                   </RadioButton>
                </children>
             </HBox>

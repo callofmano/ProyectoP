@@ -37,6 +37,8 @@ public class App extends Application {
         launch();
     }
 
-    
+    static void changeRoot(Parent rootNode) {
+        scene.setRoot(rootNode);
+    }
 
 }
