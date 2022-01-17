@@ -27,8 +27,6 @@ public class PrimaryController {
 
     @FXML
     Alert alert = new Alert(AlertType.INFORMATION);
-
-
     String editType;
 
     String nombre;
@@ -123,9 +121,7 @@ public class PrimaryController {
 
 
     }
-    public void llenarCampos(Mascota m){
-        txtNombre.setText(m.getNombre());
-    }
+
 
     
     
