@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
 import java.util.ArrayList;
@@ -18,16 +20,25 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 
 public class PrimaryController {
+
+    @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
+
+
+    String editType;
+
     String nombre;
     String nacimiento;
     String raza;
+    private Stage thistage;
     @FXML
     private RadioButton perro,gato;
     @FXML
-    private Button botonGuardar;
+    private Button botonGuardar,botonRegresar;
     @FXML
     private ComboBox <String> comboDueno, comboFoto;
     @FXML
@@ -36,6 +47,7 @@ public class PrimaryController {
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
+    
     @FXML
     private void initialize(){
     
@@ -44,8 +56,13 @@ public class PrimaryController {
             duenos.add(d.getNombre());
             }
         comboDueno.getItems().addAll(duenos);
-    
+        botonRegresar.setVisible(false);
+        alert.setTitle("Dialogo de información");
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado una mascota");
+
         }
+
     @FXML
     private void comboboxEvent (ActionEvent e){
         Object evt =e.getSource();
@@ -89,11 +106,34 @@ public class PrimaryController {
                     bufferedWriter.write(linea);
                     System.out.print(linea);
                     bufferedWriter.close();
+                    alert.showAndWait();
+                    botonRegresar.setVisible(true);
+
                     }
         catch(IOException er){
             er.printStackTrace();
         }
+
+        
+
+
         });
 
+        
+
+
+    }
+    public void llenarCampos(Mascota m){
+        txtNombre.setText(m.getNombre());
+    }
+
+    
+    
+
+
+
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
     }
 }

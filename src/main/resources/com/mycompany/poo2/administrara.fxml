@@ -21,19 +21,30 @@
                   <Insets left="160.0" />
                </VBox.margin>
             </Label>
-            <TableView prefHeight="295.0" prefWidth="424.0">
+            <TableView fx:id="listaAuspiciantes" prefHeight="295.0" prefWidth="424.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="Código " />
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                  <TableColumn prefWidth="75.0" text="Teléfono" />
-                  <TableColumn prefWidth="75.0" text="Ciudad " />
+                <TableColumn fx:id="colCodigo" prefWidth="75.0" text="Código " />
+                <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+                  <TableColumn fx:id="colTelefono" prefWidth="75.0" text="Teléfono" />
+                  <TableColumn fx:id="colCiudad" prefWidth="75.0" text="Ciudad " />
                   <TableColumn prefWidth="75.0" text="Opciones" />
               </columns>
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
             </TableView>
-            <Button mnemonicParsing="false" prefHeight="50.0" onAction= "#switchToCrearAuspiciante" prefWidth="178.0" text="Crear Auspiciante " >
+            <Button mnemonicParsing="false" onAction="#switchToCrearAuspiciante" prefHeight="50.0" prefWidth="178.0" text="Crear Auspiciante ">
+               <VBox.margin>
+                  <Insets left="220.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regrasar Menú Principal">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
                <VBox.margin>
                   <Insets left="220.0" />
                </VBox.margin>

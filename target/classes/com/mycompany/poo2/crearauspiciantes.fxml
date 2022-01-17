@@ -32,7 +32,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField>
+=======
+                  <TextField fx:id="txtNombre">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
@@ -44,6 +48,26 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+<<<<<<< HEAD
+=======
+                  <Label text="Apellidos:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtApellidos">
+                     <HBox.margin>
+                        <Insets left="67.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                   <Label text="Dirección:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -52,7 +76,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField>
+=======
+                  <TextField fx:id="txtDireccion">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="65.0" />
                      </HBox.margin>
@@ -72,7 +100,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField>
+=======
+                  <TextField fx:id="txtTelefono">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="75.0" />
                      </HBox.margin>
@@ -92,7 +124,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <ComboBox prefWidth="150.0">
+=======
+                  <ComboBox fx:id="comboCiudad" prefWidth="150.0">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="90.0" />
                      </HBox.margin>
@@ -112,7 +148,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField>
+=======
+                  <TextField fx:id="txtEmail">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="102.0" />
                      </HBox.margin>
@@ -132,7 +172,11 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
+<<<<<<< HEAD
                   <TextField>
+=======
+                  <TextField fx:id="txtWebPage">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="70.0" />
                      </HBox.margin>
@@ -144,14 +188,27 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+<<<<<<< HEAD
                   <Button mnemonicParsing="false" text="Guardar">
+=======
+                  <Button fx:id="botonGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar">
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      <HBox.margin>
                         <Insets left="180.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#switchToAdministrarAuspiciantes" text="Cancelar">
                      <HBox.margin>
+<<<<<<< HEAD
                         <Insets left="100.0" />
+=======
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar al Menú">
+                     <HBox.margin>
+                        <Insets left="50.0" />
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
                      </HBox.margin>
                   </Button>
                </children>

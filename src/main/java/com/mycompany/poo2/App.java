@@ -5,9 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-
+//probando maykoll 
 /**
  * JavaFX App
  */
@@ -15,8 +14,9 @@ public class App extends Application {
     public static String pathPersonas = "archivo/duenosP5.csv";
     public static String pathMascotas = "archivo/mascotas.csv";
     public static String pathCiudades = "archivo/ciudades.csv";
+    public static String pathAuspiciantes= "archivo/auspiciantes.csv";
+    public static String pathConcursos = "archivo/concursos.csv";
     private static Scene scene;
-
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("menuprincipal"), 640, 480);
@@ -35,6 +35,10 @@ public class App extends Application {
 
     public static void main(String[] args) {
         launch();
+    }
+
+    static void changeRoot(Parent rootNode) {
+        scene.setRoot(rootNode);
     }
 
 }

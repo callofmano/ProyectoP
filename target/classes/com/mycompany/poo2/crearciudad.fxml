@@ -85,6 +85,14 @@
                   <Insets top="30.0" />
                </VBox.margin>
             </HBox>
+<<<<<<< HEAD
+=======
+            <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" prefHeight="28.0" prefWidth="98.0" text="Regresar Menú">
+               <VBox.margin>
+                  <Insets bottom="100.0" left="250.0" />
+               </VBox.margin>
+            </Button>
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
          </children>
       </VBox>
    </children>

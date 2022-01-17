@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.poo2;;
+package com.mycompany.poo2;
 
 import java.io.IOException;
 import java.util.*;
@@ -28,17 +28,21 @@ import com.mycompany.poo2.modelo.Ciudad;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
 import java.util.ArrayList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 /**
  *
  * @author User
  */
 public class CrearciudadController {
     @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
+    @FXML
     private TextField txtNombre;
     @FXML
     private ComboBox <String> comboProvincia;
     @FXML
-    private Button botonGuardar; 
+    private Button botonGuardar,botonRegresar; 
     @FXML 
     private void switchToAdministarCiudades() throws IOException {
         App.setRoot("administrarciudades");
@@ -51,9 +55,14 @@ public class CrearciudadController {
             ciudades.add(d.getProvincia());
             }
         comboProvincia.getItems().addAll(ciudades);
-        
+        botonRegresar.setVisible(false);
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado una ciudad");
         }
-    
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+        }
     @FXML
     private void guardar(ActionEvent event){
     
@@ -69,6 +78,8 @@ public class CrearciudadController {
             String linea = ciudad.getCodigo()+","+ciudad.getNombre()+","+ciudad.getProvincia();
             bufferedWriter.write(linea);
             bufferedWriter.close();
+            botonRegresar.setVisible(true);
+            alert.showAndWait();
             }
         catch(IOException e1){
             e1.printStackTrace();

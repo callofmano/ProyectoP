@@ -25,6 +25,10 @@
         </columns>
       </TableView>
       <Button fx:id="primaryButton" onAction="#switchToCreard" text="Agregar Dueño" />
+<<<<<<< HEAD
+=======
+      <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar Menú Principal" />
+>>>>>>> a6ca8f8c5e0dffa7bac9491f467201648b6dbb43
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

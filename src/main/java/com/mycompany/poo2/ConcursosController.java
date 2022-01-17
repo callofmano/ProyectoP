@@ -15,4 +15,9 @@ public class ConcursosController {
     private void switchToCrearConcursos() throws IOException {
         App.setRoot("crearconcurso");
     }
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+    }
+
 }

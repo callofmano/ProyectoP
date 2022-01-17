@@ -4,17 +4,86 @@
  * and open the template in the editor.
  */
 package com.mycompany.poo2;
-
 import java.io.IOException;
 import javafx.fxml.FXML;
+import java.io.IOException;
 
+import com.mycompany.poo2.modelo.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import javafx.fxml.FXML;
+import javafx.event.ActionEvent;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Button;
+import java.util.ArrayList;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 /**
  *
  * @author User
  */
 public class CrearauspiciantesController {
     @FXML
+    Alert alert = new Alert(AlertType.INFORMATION);
+    @FXML
+    private TextField txtNombre,txtDireccion,txtTelefono,txtEmail,txtWebPage,txtApellidos;
+    @FXML
+    private Button botonGuardar,botonRegresar;
+    @FXML
+    private ComboBox <String>comboCiudad;
+    @FXML
     private void switchToAdministrarAuspiciantes() throws IOException {
         App.setRoot("administrara");
+    }
+    @FXML
+    private void switchToMenuPrincipal() throws IOException{
+        App.setRoot("menuprincipal");
+        }
+    @FXML
+    private void initialize(){
+        ArrayList <String> ciudades = new ArrayList<>();
+        for(Ciudad d: Ciudad.generarCiudad(App.pathCiudades)){
+            ciudades.add(d.getNombre());
+            }
+        comboCiudad.getItems().addAll(ciudades);
+        botonRegresar.setVisible(false);
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado un auspiciante");
+    }
+
+    @FXML
+
+    private void guardar(ActionEvent event) throws IOException{
+        botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
+        String nombre = txtNombre.getText();
+        String apellidos = txtApellidos.getText();
+        String direccion = txtDireccion.getText();
+        String telefono = txtTelefono.getText();
+        String  email = txtEmail.getText();
+        String webPage = txtWebPage.getText();
+        String ciudad_comboBox = comboCiudad.getSelectionModel().getSelectedItem();
+        Ciudad ciudad = Ciudad.buscarCiudad(Ciudad.generarCiudad(App.pathCiudades), ciudad_comboBox);
+        if(ciudad==null){
+            System.out.print("Debe crear esta ciudad primero");
+        }
+        Auspiciante auspiciante = new Auspiciante(email,webPage,nombre,telefono,ciudad,apellidos);
+
+        try{
+            FileWriter writer = new FileWriter(App.pathAuspiciantes,true);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("\n");
+            String linea = auspiciante.getCodigo()+","+ auspiciante.getNombre()+","+auspiciante.getApellido()+","+auspiciante.getTelefono()+","+auspiciante.getCiudad()+","+auspiciante.getEmail()+","+auspiciante.getWebpage();
+            bufferedWriter.write(linea);
+            bufferedWriter.close();
+            alert.showAndWait();
+            botonRegresar.setVisible(true);
+        }
+        catch( IOException e1){
+            e1.printStackTrace();
+        }
+        });
     }
 }

@@ -64,7 +64,6 @@ public class DuenoMascota extends Persona {
      */
     public static ArrayList<DuenoMascota> cargarDuenos(String ruta) {
         ArrayList<DuenoMascota> duenos = new ArrayList<>();
-        int intentos = 0;
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
         try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
             String line = br.readLine();
@@ -97,4 +96,6 @@ public class DuenoMascota extends Persona {
         }
         return dueno;
     }
+
+
 }

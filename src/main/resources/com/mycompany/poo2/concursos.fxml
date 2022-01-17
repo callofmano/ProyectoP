@@ -26,10 +26,15 @@
       </TableView>
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="494.0">
          <children>
-            <Button alignment="CENTER" onAction="#switchToCrearConcursos" mnemonicParsing="false"  prefHeight="26.0" prefWidth="122.0" text="Crear Concurso" translateX="-30.0" />
+            <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchToCrearConcursos" prefHeight="26.0" prefWidth="122.0" text="Crear Concurso" translateX="-30.0" />
             <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="26.0" prefWidth="124.0" text="Enviar invitaciones" textAlignment="CENTER" translateX="30.0" />
          </children>
       </HBox>
+      <Button mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar Menú Principal">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

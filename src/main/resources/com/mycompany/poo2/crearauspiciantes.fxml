@@ -32,7 +32,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtNombre">
                      <HBox.margin>
                         <Insets left="80.0" />
                      </HBox.margin>
@@ -44,6 +44,23 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
+                  <Label text="Apellidos:">
+                     <font>
+                        <Font name="Arial Bold" size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="100.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="txtApellidos">
+                     <HBox.margin>
+                        <Insets left="67.0" top="10.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
                   <Label text="Dirección:">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -52,7 +69,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtDireccion">
                      <HBox.margin>
                         <Insets left="65.0" />
                      </HBox.margin>
@@ -72,7 +89,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtTelefono">
                      <HBox.margin>
                         <Insets left="75.0" />
                      </HBox.margin>
@@ -92,7 +109,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0">
+                  <ComboBox fx:id="comboCiudad" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="90.0" />
                      </HBox.margin>
@@ -112,7 +129,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtEmail">
                      <HBox.margin>
                         <Insets left="102.0" />
                      </HBox.margin>
@@ -132,7 +149,7 @@
                         <Insets left="100.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <TextField fx:id="txtWebPage">
                      <HBox.margin>
                         <Insets left="70.0" />
                      </HBox.margin>
@@ -144,14 +161,19 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="botonGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                      <HBox.margin>
                         <Insets left="180.0" />
                      </HBox.margin>
                   </Button>
                   <Button mnemonicParsing="false" onAction="#switchToAdministrarAuspiciantes" text="Cancelar">
                      <HBox.margin>
-                        <Insets left="100.0" />
+                        <Insets left="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar al Menú">
+                     <HBox.margin>
+                        <Insets left="50.0" />
                      </HBox.margin>
                   </Button>
                </children>
