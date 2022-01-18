@@ -63,7 +63,7 @@ public class Ciudad {
             //System.out.println(ciudad.getCodigo());
             contador=codigo+1; 
             ciudades.add(ciudad);
-            System.out.print(ciudad);
+            //System.out.print(ciudad);
             line = br.readLine();
             }
         }catch(IOException e){
@@ -71,13 +71,7 @@ public class Ciudad {
         //imprimir(ciudades);
         return ciudades;
     }
-    public static void imprimir(ArrayList<Ciudad> c) {
-        for(Ciudad ciu:c){
-            System.out.println(ciu.getCodigo());
-        }
 
-
-    }
     public static Ciudad buscarCiudad( ArrayList<Ciudad> ciudades, String n){
         Ciudad ciudad = null;
         for(Ciudad c:ciudades){

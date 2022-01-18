@@ -1,6 +1,14 @@
 package com.mycompany.poo2;
 import com.mycompany.poo2.modelo.Mascota;
+import com.mycompany.poo2.modelo.Persona;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
@@ -14,10 +22,13 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 
 public class SecondaryController {
+    
     @FXML
     TableView listaMascotas;
     @FXML
@@ -88,6 +99,41 @@ public class SecondaryController {
             App.changeRoot(root);
     }
 
+    public void eliminar(Mascota mas){
+        ArrayList<Mascota> lista= new ArrayList<>();
+        lista=  mas.cargarMascotas(App.pathMascotas);
+        /*if(lista.contains(mas)){
+            lista.remove(mas);
+        }*/
+        Mascota eliminable =null;
+        for(Mascota ms : lista){
+            if(ms.getCodigo().equals(mas.getCodigo())){
+                eliminable = ms;
+            }
+        }
+        lista.remove(eliminable);
+        
+        try {
+            FileWriter writer = new FileWriter(App.pathMascotas);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("id;nombre;tipo;raza;fecha_nac;foto;id_dueno");
+            for(Mascota m:lista ){
+                bufferedWriter.write("\n");
+                String[] date=m.getFechaNacimiento().toString().split("-");
+                String linea = m.getCodigo()+";"+m.getNombre()+";"+m.getEspecie().toString()+";"+m.getRaza()+";"+date[2]+"/"+date[1]+"/"+date[0]+";"+"png"+";"+m.getDueno().getCi();
+                bufferedWriter.write(linea);
+                System.out.print(linea);
+                
+        }
+        bufferedWriter.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+                
+        
+       }
+
     @FXML
     private void initialize(){
     colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -146,6 +192,16 @@ public class SecondaryController {
                             Button btnEl = new Button("Eliminar");
                             //se agregan botones al hbox
                             hbOpciones.getChildren().addAll(btnEd,btnEl,btnDet);
+                            btnEl.setOnAction(e ->{
+
+                                eliminar(mas);
+                                try {
+                                    switchToMenuPrincipal();
+                                } catch (IOException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                }
+                            });
                             //se ubica hbox en la celda
                             setGraphic(hbOpciones);
                         }
