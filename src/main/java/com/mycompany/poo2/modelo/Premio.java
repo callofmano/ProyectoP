@@ -1,7 +1,5 @@
 package com.mycompany.poo2.modelo;
 
-import java.lang.reflect.Array;
-
 public class Premio {
     private Posicion pos;
     

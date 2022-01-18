@@ -1,14 +1,11 @@
 package com.mycompany.poo2.modelo;
 
 import com.mycompany.poo2.App;
-import com.mycompany.poo2.modelo.Persona;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Objects;
-import java.lang.Class;
+
 import java.util.ArrayList;
 
 public class DuenoMascota extends Persona {

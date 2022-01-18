@@ -1,16 +1,6 @@
 package com.mycompany.poo2.modelo;
 
 import com.mycompany.poo2.App;
-import com.mycompany.poo2.PrimaryController;
-import com.mycompany.poo2.SecondaryController;
-
-import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
-import javafx.scene.layout.Pane;
 
 import java.io.*;
 import java.time.LocalDate;
