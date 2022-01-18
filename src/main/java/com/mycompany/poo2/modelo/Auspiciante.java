@@ -24,7 +24,13 @@ public class Auspiciante extends Persona{
 
     public Auspiciante(String email, String webpage, String nombre, String telefono, Ciudad ciudad, String apellidos) {
         super(nombre, telefono, ciudad,apellidos);
-        codigo = contador++ ;
+        this.codigo = contador++ ;
+        this.email = email;
+        this.webpage = webpage;
+    }
+    public Auspiciante(String email, String webpage, String nombre, String telefono, Ciudad ciudad, String apellidos, int codigo) {
+        super(nombre, telefono, ciudad,apellidos);
+        this.codigo = codigo;
         this.email = email;
         this.webpage = webpage;
     }
@@ -68,7 +74,6 @@ public class Auspiciante extends Persona{
     ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
         String linea = br.readLine();
-        linea=br.readLine();
         while (linea != null) {
             
             String datos[]= linea.split(",");
@@ -78,8 +83,9 @@ public class Auspiciante extends Persona{
             Ciudad ciudad = Ciudad.buscarCiudad(Ciudad.generarCiudad(App.pathCiudades), datos[4].strip());
             String email = datos[5];
             String webpage= datos[6];
-
+            int codigo = Integer.valueOf(datos[0]);
             Auspiciante auspiciante= new Auspiciante(email,webpage,nombre,telefono,ciudad,apellidos);
+            contador = codigo +1;
             auspiciantes.add(auspiciante);
             linea = br.readLine();
             }
@@ -87,8 +93,17 @@ public class Auspiciante extends Persona{
     catch(IOException e){
         e.printStackTrace();
     }
-
-
     return auspiciantes;
+    }
+
+    public static Auspiciante buscarAuspiciante(String nombre)
+    {   
+        Auspiciante auspiciante=null;
+        for (Auspiciante a: cargarAuspiciantes(App.pathAuspiciantes)){
+            if(a.getNombre().equals(nombre)){
+                auspiciante=a;
+                }
+            }
+        return auspiciante;
     }
 }

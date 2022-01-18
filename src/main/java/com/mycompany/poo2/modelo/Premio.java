@@ -14,6 +14,31 @@ public class Premio {
     
     private Auspiciante auspiciante;
     
+    
+
+    public Posicion getPos() {
+        return pos;
+    }
+
+    public void setPos(Posicion pos) {
+        this.pos = pos;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Auspiciante getAuspiciante() {
+        return auspiciante;
+    }
+
+    public void setAuspiciante(Auspiciante auspiciante) {
+        this.auspiciante = auspiciante;
+    }
 
     public Premio(Posicion pos, String descripcion, Auspiciante auspiciante) {
         this.pos = pos;
@@ -34,7 +59,7 @@ public class Premio {
             while (line != null) {
                 String datos []=line.split(",");
                 Posicion posicion = Posicion.valueOf(datos[0]);
-                Auspiciante auspiciante ;
+                Auspiciante auspiciante= Auspiciante.buscarAuspiciante(datos[1]);
                 String des = datos[2];
         
                 }
