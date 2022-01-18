@@ -25,10 +25,16 @@ public class Ciudad {
         this.nombre = nombre;
         this.provincia = provinicia;
     }
+    public Ciudad(int codigo, String nombre, String provinicia) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.provincia = provinicia;
+        this.codigo = codigo;
+    }
 
     @Override
     public String toString() {
-        return nombre ;
+        return nombre + Integer.toString(codigo);
     }
 
     public Ciudad() {
@@ -40,7 +46,7 @@ public class Ciudad {
         return provincia;
         }
     public String getCodigo(){
-        return Integer.toString(contador);
+        return Integer.toString(codigo);
         }
     public static ArrayList<Ciudad> generarCiudad(String ruta){
         ArrayList<Ciudad> ciudades = new ArrayList<>();
@@ -49,17 +55,29 @@ public class Ciudad {
         String line = br.readLine();
         while (line != null){
             String datos[] = line.split(",");
+            int codigo =   Integer.valueOf(datos[0].strip());
+            //System.out.println(codigo);
             String nombre = datos[1].strip();
             String provincia = datos[2].strip();
-            Ciudad ciudad = new Ciudad(nombre,provincia);
+            Ciudad ciudad = new Ciudad(codigo, nombre,provincia);
+            //System.out.println(ciudad.getCodigo());
+            contador=codigo+1; 
             ciudades.add(ciudad);
+            System.out.print(ciudad);
             line = br.readLine();
             }
         }catch(IOException e){
                 e.printStackTrace();}
+        //imprimir(ciudades);
         return ciudades;
     }
-    
+    public static void imprimir(ArrayList<Ciudad> c) {
+        for(Ciudad ciu:c){
+            System.out.println(ciu.getCodigo());
+        }
+
+
+    }
     public static Ciudad buscarCiudad( ArrayList<Ciudad> ciudades, String n){
         Ciudad ciudad = null;
         for(Ciudad c:ciudades){
