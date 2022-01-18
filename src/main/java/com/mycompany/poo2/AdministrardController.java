@@ -5,6 +5,9 @@
  */
 package com.mycompany.poo2;
 import com.mycompany.poo2.modelo.DuenoMascota;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +22,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.util.Callback;
 
 import java.util.ArrayList;
@@ -41,6 +45,8 @@ public class AdministrardController {
     @FXML
     private TableColumn<DuenoMascota,String> colCiudad;
     @FXML
+    private TableColumn<DuenoMascota,Void> colOpciones;
+    @FXML
     private void switchToCreard() throws IOException {
         App.setRoot("creard");
     }
@@ -55,15 +61,9 @@ public class AdministrardController {
     colApellidos.setCellValueFactory(new  PropertyValueFactory<>("apellido"));
     colTelefono.setCellValueFactory(new  PropertyValueFactory<>("telefono"));
     colCiudad.setCellValueFactory(new  PropertyValueFactory<>("ciudad"));
+    agregarOpciones();
     listaDuenos.getItems().setAll(DuenoMascota.cargarDuenos(App.pathPersonas));
     }
-
-
-
-
-
-
-
 
     public void switchToEdit(DuenoMascota dueno) throws IOException{
         //App.setRoot("primary");
@@ -85,23 +85,39 @@ public class AdministrardController {
         
     }
 
-    public void switchToDetalle(DuenoMascota d) throws IOException{
-
+    public void eliminar(DuenoMascota dueno){
+        ArrayList<DuenoMascota> lista= new ArrayList<>();
+        lista=  dueno.cargarDuenos(App.pathPersonas);
+        /*if(lista.contains(mas)){
+            lista.remove(mas);
+        }*/
+        DuenoMascota eliminable =null;
+        for(DuenoMascota due : lista){
+            if(due.getCi().equals(dueno.getCi())){
+                eliminable = due;
+            }
+        }
+        lista.remove(eliminable);
         
-        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("detalleMascota.fxml"));//no tiene el controlador especificado
-            DetalleMascotaController dm = new DetalleMascotaController();
-
-            fxmlLoader.setController(dm);//se asigna el controlador
-
-            VBox root = (VBox) fxmlLoader.load();
-            dm.llenarDatos(m);
-            
-            
-            App.changeRoot(root);
-    }
-
-
-
+        try {
+            FileWriter writer = new FileWriter(App.pathPersonas);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("id;nombre;tipo;raza;fecha_nac;foto;id_dueno");
+            for(DuenoMascota d:lista ){
+                bufferedWriter.write("\n");
+                String linea = d.getCi() + "," + d.getApellido()+","+d.getNombre()+","+d.getDireccion()+","+d.getCiudad().getNombre()+","+d.getEmail();
+                bufferedWriter.write(linea);
+                System.out.print(linea);
+                
+        }
+        bufferedWriter.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+                
+        
+       }
 
     //crear botones dinamicos 
     private void agregarOpciones() {
@@ -132,30 +148,18 @@ public class AdministrardController {
                                     e1.printStackTrace();
                                 }
                             });
-
-
-                            Button btnDet = new Button("Detalle");
-                            //System.out.print(mas.toString());
-                            btnDet.setOnAction(e ->{
-                                try {
-                                    switchToDetalle(dueno);
-                                } catch (IOException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
-                                }
-                            });
                                
                             //boton eliminar
                             Button btnEl = new Button("Eliminar");
                             //se agregan botones al hbox
-                            hbOpciones.getChildren().addAll(btnEd,btnEl,btnDet);
+                            hbOpciones.getChildren().addAll(btnEd,btnEl);
                             btnEl.setOnAction(e ->{
 
                                 //eliminar(mas);
                                 Alert alert =  new Alert(AlertType.CONFIRMATION);
                                 alert.setTitle("Eliminar \"" + "\"?");
-                                alert.setHeaderText("Eliminar mascota \"" +  "\"?");
-                                alert.setContentText("Seguro desea eliminar esta mascota:"+dueno+ "?");
+                                alert.setHeaderText("Eliminar dueño \"" +  "\"?");
+                                alert.setContentText("Seguro desea eliminar este dueño:"+dueno+ "?");
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if(!result.isPresent() || result.get() != ButtonType.OK) {
                                     try {
@@ -185,7 +189,7 @@ public class AdministrardController {
             }
         };
 
-        colAcciones.setCellFactory(cellFactory);
+        colOpciones.setCellFactory(cellFactory);
 
     }
 }

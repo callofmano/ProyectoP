@@ -49,7 +49,7 @@ public class DuenoMascota extends Persona {
     }
     
     public String getEmail(){
-        return super.email;
+        return email;
     }
 
     public String getDireccion(){
