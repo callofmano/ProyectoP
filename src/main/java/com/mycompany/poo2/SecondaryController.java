@@ -73,10 +73,19 @@ public class SecondaryController {
         }
         
     }
-    public void switchToDetalleMascota() throws IOException{
+    public void switchToDetalleMascota(Mascota m) throws IOException{
 
-        App.setRoot("detalleMascota");
         
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("detalleMascota.fxml"));//no tiene el controlador especificado
+            DetalleMascotaController dm = new DetalleMascotaController();
+
+            fxmlLoader.setController(dm);//se asigna el controlador
+
+            VBox root = (VBox) fxmlLoader.load();
+            dm.llenarDatos(m);
+            
+            
+            App.changeRoot(root);
     }
 
     @FXML
@@ -120,11 +129,23 @@ public class SecondaryController {
                                     e1.printStackTrace();
                                 }
                             });
+
+
+                            Button btnDet = new Button("Detalle");
+                            //System.out.print(mas.toString());
+                            btnDet.setOnAction(e ->{
+                                try {
+                                    switchToDetalleMascota(mas);
+                                } catch (IOException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                }
+                            });
                                
                             //boton eliminar
                             Button btnEl = new Button("Eliminar");
                             //se agregan botones al hbox
-                            hbOpciones.getChildren().addAll(btnEd,btnEl);
+                            hbOpciones.getChildren().addAll(btnEd,btnEl,btnDet);
                             //se ubica hbox en la celda
                             setGraphic(hbOpciones);
                         }

@@ -28,7 +28,7 @@ public class Mascota {
 
     private String foto;
 
-    public int codigo;
+    private int codigo;
 
     private String raza;
 
@@ -92,9 +92,33 @@ public class Mascota {
 
 
 
+    public String getRaza() {
+        return raza;
+    }
+
+
+
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+
+
+
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+
+
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+
+
     @Override
     public String toString() {
-        return "Mascota{ codigo " + codigo + "nombre=" + nombre + ", dueno=" + dueno + '}';
+        return "Mascota{ codigo " + codigo + "nombre=" + nombre + ", dueno=" + dueno + " fecha"+fechaNacimiento.toString()+" raza"+raza+'}';
     }
 
     public static ArrayList<Mascota> cargarMascotas(String ruta) {
