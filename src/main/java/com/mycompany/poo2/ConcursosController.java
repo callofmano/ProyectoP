@@ -7,13 +7,24 @@
 package com.mycompany.poo2;
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
 
 
 public class ConcursosController {
     @FXML
     private void switchToCrearConcursos() throws IOException {
-        App.setRoot("crearconcurso");
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("crearconcurso.fxml"));//no tiene el controlador especificado
+            CrearconcursoController apre = new CrearconcursoController();
+
+            fxmlLoader.setController(apre);//se asigna el controlador
+
+            VBox root = (VBox) fxmlLoader.load();
+            
+            
+
+            App.changeRoot(root);
     }
     @FXML
     private void switchToMenuPrincipal() throws IOException{

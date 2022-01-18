@@ -67,7 +67,7 @@ public class Auspiciante extends Persona{
 
     @Override
     public String toString() {
-        return "Auspiciante{" +super.toString()+ "codigo=" + codigo + ", email=" + email + ", webpage=" + webpage + '}';
+        return super.toString();
     }
 
     public static ArrayList<Auspiciante> cargarAuspiciantes (String ruta){

@@ -1,5 +1,5 @@
 id;nombre;tipo;raza;fecha_nac;foto;id_dueno
-1;Max;PERRO;chow chow;01/01/2015;png;1
+1;Max1;PERRO;chow chow;01/01/2015;png;1
 2;Chato;PERRO;carlino;01/01/2015;png;2
 4;Chaval;PERRO;golden;01/01/2015;png;4
 5;Harry;PERRO;labrador;01/01/2015;png;5
@@ -65,3 +65,4 @@ id;nombre;tipo;raza;fecha_nac;foto;id_dueno
 65;Pepe;PERRO;cocker;02/02/2020;png;22
 66;pepo;PERRO;cocker;02/02/2021;png;30
 67;martini;PERRO;asd;01/02/2002;png;1
+68;asd;perro;123;12/12/1234;png;1

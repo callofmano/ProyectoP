@@ -20,13 +20,17 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import java.util.ArrayList;
 import java.util.Optional;
@@ -39,16 +43,21 @@ import javafx.scene.input.MouseEvent;
  * @author User
  */
 public class CrearconcursoController {
+    public static ArrayList<Premio> premiosActuales;
+    public static boolean isEditing;
     @FXML ComboBox<Especie> cmbEspecie;
     @FXML ComboBox<Ciudad> cmbCiudad;
+    @FXML ComboBox<Auspiciante> cmbAuspiciantes;
     @FXML TextField txtNombre, txtHora, txtLugar ;
     @FXML TableView listaPremios;
     @FXML private TableColumn<Premio,String>colDescripcion;
     @FXML private TableColumn<Premio,Posicion> colPos;
-    @FXML private TableColumn<Premio,Auspiciante>colAuspiciante ;
-    @FXML Button botonGuardar, botonCancelar;
+    @FXML private TableColumn<Premio,String>colAuspiciante ;
+    @FXML Button botonGuardar, botonCancelar,botonPremio;
     @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
+    @FXML HBox hboxPremio;
 
+    
 
     @FXML
     private void switchToAdministarConcursos() throws IOException {
@@ -56,8 +65,21 @@ public class CrearconcursoController {
     }
     @FXML
     private void switchToAnadirPremio() throws IOException {
-        App.setRoot("anadirPremio");
+        //App.setRoot("anadirPremio");
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("anadirPremio.fxml"));//no tiene el controlador especificado
+            AnadirPremioController apre = new AnadirPremioController();
+
+            fxmlLoader.setController(apre);//se asigna el controlador
+
+            FlowPane root = (FlowPane) fxmlLoader.load();
+            
+            
+
+            App.changeRoot(root);
+
     }
+
+       
 
     @FXML
     private void initialize(){
@@ -65,9 +87,32 @@ public class CrearconcursoController {
         for(Ciudad d: Ciudad.generarCiudad(App.pathCiudades)){
             ciudades.add(d);
             }
-        Especie especieArray[] = new Especie[] {Especie.valueOf("PERRO"),Especie.valueOf("GATO")};
+        Especie especieArray[] = new Especie[] {Especie.valueOf("PERRO"),Especie.valueOf("GATO"),Especie.valueOf("TODOS")};
         cmbCiudad.getItems().addAll(ciudades);
         cmbEspecie.getItems().addAll(especieArray);
+
+        ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
+        for(Auspiciante aus:Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+            auspiciantes.add(aus);
+        }
+        cmbAuspiciantes.getItems().addAll(auspiciantes);
+
+    
+        
+        
+
+        botonPremio.setOnAction(event-> {
+            try {
+                switchToAnadirPremio();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        });
+
+        
+        //setTablaPremios();
+        
         /*
         colDescripcion.setCellValueFactory(new PropertyValueFactory<>("pos"));
         colAuspiciante.setCellValueFactory(new PropertyValueFactory<>("codigo"));
@@ -75,6 +120,9 @@ public class CrearconcursoController {
         listaPremios.getItems().setAll(Premio.cargarPremios(App.pathPremios));
         */
     }
+
+    
+
     @FXML
     private void guardar(ActionEvent event){
 
@@ -88,10 +136,21 @@ public class CrearconcursoController {
         String lugar = txtHora.getText();
         Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
         Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
-        ArrayList <Premio> premios = Premio.cargarPremios(App.pathPremios);
+
 
         });
         }
 
-
+        public void setTablaPremios(ArrayList<Premio> p){
+            colPos.setCellValueFactory(
+            new PropertyValueFactory<Premio,Posicion>("pos")
+        );
+        colDescripcion.setCellValueFactory(
+            new PropertyValueFactory<Premio,String>("descripcion")
+        );
+        colAuspiciante.setCellValueFactory(
+            new PropertyValueFactory<Premio,String>("auspiciante")
+        );
+        listaPremios.getItems().setAll(p);
+        }
 }
