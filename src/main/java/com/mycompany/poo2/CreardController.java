@@ -46,6 +46,8 @@ public class CreardController {
         alert.setHeaderText("Esto es un dialogo de información");
         alert.setContentText("Usted ha creado un dueño");
         }
+
+    
     @FXML
     private void switchToMenuPrincipal() throws IOException{
         App.setRoot("menuprincipal");
@@ -65,7 +67,7 @@ public class CreardController {
         if(ciudad==null){
                 System.out.print("Debe crear esta ciudad primero");
             }
-        DuenoMascota dueno = new DuenoMascota(ci,nombres,telefono,ciudad,apellidos);
+        DuenoMascota dueno = new DuenoMascota(ci,nombres,telefono,email,ciudad,apellidos, direccion);
 
         try{
             FileWriter writer = new FileWriter(App.pathPersonas,true);
@@ -81,6 +83,113 @@ public class CreardController {
         catch(IOException e1){
             e1.printStackTrace();
             }
+        });
+    }
+
+    @FXML
+    private void guardar(ActionEvent event,DuenoMascota dueno){
+        if(dueno==null){
+            botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
+                String nombre = txtNombre.getText();
+                String apellido = txtApellidos.getText();
+                String direccion = txtDireccion.getText();
+                String telefono = txtTelefono.getText();
+                String ci = txtCi.getText();
+                String email = txtEmail.getText();
+                Ciudad ciudad = null;
+                for(Ciudad c: Ciudad.generarCiudad(App.pathCiudades)){
+                    if(comboCiudad.getSelectionModel().getSelectedItem().equals(c.getNombre())){
+                        ciudad = c;
+                    }
+                }
+                DuenoMascota due = new DuenoMascota(ci, nombre, telefono, email, ciudad, apellido, direccion);
+                try{
+                    FileWriter writer = new FileWriter(App.pathPersonas,true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("\n");
+                    String linea = due.getCi() + "," + due.getApellido()+","+due.getNombre()+","+due.getDireccion()+","+due.getCiudad().getNombre()+","+due.getEmail();
+                    bufferedWriter.write(linea);
+                    System.out.print(linea);
+                    bufferedWriter.close();
+                    alert.showAndWait();
+                    botonRegresar.setVisible(true);
+
+                    }
+        catch(IOException er){
+            er.printStackTrace();
+        }
+        });
+        }else{
+            //System.out.println("prueba de EDITAR //////////////////////////////--------");
+            
+            //codigo para guardar lo editado en una variable
+            String nombre = txtNombre.getText();
+            String apellido = txtApellidos.getText();
+            String direccion = txtDireccion.getText();
+            String telefono = txtTelefono.getText();
+            String ci = txtCi.getText();
+            String email = txtEmail.getText();
+            Ciudad ciudad = null;
+            for(Ciudad c: Ciudad.generarCiudad(App.pathCiudades)){
+                if(comboCiudad.getSelectionModel().getSelectedItem().equals(c.getNombre())){
+                    ciudad = c;
+                }
+            }
+            DuenoMascota due = new DuenoMascota(ci, nombre, telefono, email, ciudad, apellido, direccion);
+                
+                ArrayList<DuenoMascota> lista= DuenoMascota.cargarDuenos(App.pathPersonas);
+                Boolean aux= false;
+                DuenoMascota editable= null;
+                for(DuenoMascota duen : lista){
+                    if(duen.getCi().equals(dueno.getCi())){
+                        aux=true;
+                        editable=duen;
+                    }
+                }
+                if(aux){
+                    
+                    lista.add(lista.indexOf(editable),due);
+                    lista.remove(editable);
+                }
+
+                try {
+                    FileWriter writer = new FileWriter(App.pathPersonas);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("id,apellidos,nombres,direccion,telefono,ciudad,email,,,,,,,");
+                    for(DuenoMascota d:lista ){
+                        bufferedWriter.write("\n");
+                        String linea = d.getCi() + "," + d.getApellido()+","+d.getNombre()+","+d.getDireccion()+","+d.getCiudad().getNombre()+","+d.getEmail();
+                        bufferedWriter.write(linea);
+                        System.out.print(linea);
+                        
+                }
+                bufferedWriter.close();
+                } catch (IOException ex) {
+                    // TODO Auto-generated catch block
+                    ex.printStackTrace();
+                }
+
+                System.out.println(lista);
+                alert.showAndWait();
+                    botonRegresar.setVisible(true);
+        }
+    }
+
+
+    public void llenarCampos(DuenoMascota dueno){
+        txtNombre.setText(dueno.getNombre());
+        txtApellidos.setText(dueno.getApellido());
+        txtCi.setText(dueno.getCi());
+        txtDireccion.setText(dueno.getDireccion());
+        ArrayList <String> ciudades = new ArrayList<>();
+        for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
+            ciudades.add(d.getCiudad().toString());
+        }
+        comboCiudad.getItems().addAll(ciudades);
+        comboCiudad.getSelectionModel().select(ciudades.indexOf(dueno.getCiudad().getNombre()));
+
+        botonGuardar.setOnAction(event-> {
+            guardar(event,dueno);
         });
     }
 }
