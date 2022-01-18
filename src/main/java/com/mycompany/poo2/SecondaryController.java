@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -26,6 +27,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class SecondaryController {
     
@@ -194,13 +196,30 @@ public class SecondaryController {
                             hbOpciones.getChildren().addAll(btnEd,btnEl,btnDet);
                             btnEl.setOnAction(e ->{
 
-                                eliminar(mas);
-                                try {
-                                    switchToMenuPrincipal();
-                                } catch (IOException e1) {
-                                    // TODO Auto-generated catch block
-                                    e1.printStackTrace();
+                                //eliminar(mas);
+                                Alert alert =  new Alert(AlertType.CONFIRMATION);
+                                alert.setTitle("eliminar \"" + "\"?");
+                                alert.setHeaderText("eliminar mascota \"" +  "\"?");
+                                alert.setContentText("Seguro desea eliminar esta mascota?");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if(!result.isPresent() || result.get() != ButtonType.OK) {
+                                    try {
+                                        switchToMenuPrincipal();
+                                    } catch (IOException e1) {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                    }
+                                } else {
+                                    eliminar(mas);
+                                    try {
+                                        switchToMenuPrincipal();
+                                    } catch (IOException e1) {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                    }
+                                    
                                 }
+                                
                             });
                             //se ubica hbox en la celda
                             setGraphic(hbOpciones);
