@@ -198,9 +198,9 @@ public class SecondaryController {
 
                                 //eliminar(mas);
                                 Alert alert =  new Alert(AlertType.CONFIRMATION);
-                                alert.setTitle("eliminar \"" + "\"?");
-                                alert.setHeaderText("eliminar mascota \"" +  "\"?");
-                                alert.setContentText("Seguro desea eliminar esta mascota?");
+                                alert.setTitle("Eliminar \"" + "\"?");
+                                alert.setHeaderText("Eliminar mascota \"" +  "\"?");
+                                alert.setContentText("Seguro desea eliminar esta mascota:"+mas+ "?");
                                 Optional<ButtonType> result = alert.showAndWait();
                                 if(!result.isPresent() || result.get() != ButtonType.OK) {
                                     try {

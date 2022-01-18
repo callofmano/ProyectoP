@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.AnadirPremioController">
    <children>
       <VBox prefHeight="401.0" prefWidth="599.0">
@@ -33,11 +32,11 @@
                         <Insets left="50.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField>
+                  <ComboBox fx:id="cmbPosicion" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="100.0" />
                      </HBox.margin>
-                  </TextField>
+                  </ComboBox>
                </children>
                <VBox.margin>
                   <Insets top="20.0" />
@@ -53,7 +52,7 @@
                         <Insets left="50.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="150.0">
+                  <TextField fx:id="txtDescripcion" prefHeight="25.0" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="110.0" />
                      </HBox.margin>
@@ -73,7 +72,7 @@
                         <Insets left="50.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefWidth="150.0">
+                  <ComboBox fx:id="cmbAuspiciante" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="105.0" />
                      </HBox.margin>
@@ -85,7 +84,7 @@
             </HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" text="Guardar">
+                  <Button fx:id="botonGuardar" mnemonicParsing="false" onAction="#guardar" text="Guardar">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -93,7 +92,7 @@
                         <Insets left="180.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" text="Cancelar">
+                  <Button fx:id="botonCancelar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Cancelar">
                      <font>
                         <Font name="Arial Bold" size="14.0" />
                      </font>
@@ -106,6 +105,14 @@
                   <Insets top="20.0" />
                </padding>
             </HBox>
+            <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar">
+               <font>
+                  <Font name="Arial Bold" size="14.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="250.0" />
+               </VBox.margin>
+            </Button>
          </children>
       </VBox>
    </children>
