@@ -86,7 +86,9 @@ public class Mascota {
         return especie;
     }
 
-
+    public String getFoto(){
+        return foto;
+    }
     
 
 
