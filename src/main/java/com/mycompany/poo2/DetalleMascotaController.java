@@ -39,6 +39,7 @@ public class DetalleMascotaController {
         InputStream input = null;
         try{
             input = App.class.getResource(m.getFoto()).openStream();
+
             Image img = new Image(input,50,50,false,false);
             imageView.setImage(img);
             

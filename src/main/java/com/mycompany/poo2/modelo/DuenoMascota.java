@@ -14,10 +14,13 @@ import java.util.ArrayList;
 public class DuenoMascota extends Persona {
 
     public String ci;
-    
-    public DuenoMascota(String ci, String nombre, String telefono, Ciudad ciudad, String apellidos) {
+    public String direccion;
+    public String email;
+    public DuenoMascota(String ci, String nombre, String telefono,String email, Ciudad ciudad, String apellidos, String direccion) {
         super(nombre, telefono, ciudad,apellidos);
         this.ci = ci;
+        this.direccion = direccion;
+        this.email = email;
     }
 
     @Override
@@ -43,6 +46,14 @@ public class DuenoMascota extends Persona {
     
     public Ciudad getCiudad(){
         return super.getCiudad();
+    }
+    
+    public String getEmail(){
+        return super.email;
+    }
+
+    public String getDireccion(){
+        return direccion;
     }
     //AGREGAR ECUALS
 
@@ -74,9 +85,11 @@ public class DuenoMascota extends Persona {
                 String ci = datos[0].strip();
                 String nombre = datos[2].strip();
                 String apellido = datos[1].strip();
+                String direccion = datos[3].strip();
                 String telefono = datos[4].strip();
+                String email = datos[6].strip();
                 Ciudad ciudad = Ciudad.buscarCiudad(Ciudad.generarCiudad(App.pathCiudades), datos[5].strip());
-                DuenoMascota dueno = new DuenoMascota(ci, nombre, telefono, ciudad,apellido);
+                DuenoMascota dueno = new DuenoMascota(ci, nombre, telefono, email, ciudad,apellido, direccion);
                 duenos.add(dueno);
 
                 line = br.readLine();
