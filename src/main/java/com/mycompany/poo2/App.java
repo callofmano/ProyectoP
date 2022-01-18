@@ -18,6 +18,7 @@ public class App extends Application {
     public static String pathCiudades = "archivo/ciudades.csv";
     public static String pathAuspiciantes= "archivo/auspiciantes.csv";
     public static String pathConcursos = "archivo/concursos.csv";
+    public static String pathPremios = "archivo/premios.csv";
     private static Scene scene;
     @Override
     public void start(Stage stage) throws IOException {

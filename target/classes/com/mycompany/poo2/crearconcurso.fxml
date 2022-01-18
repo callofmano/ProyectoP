@@ -33,7 +33,7 @@
             </HBox>
             <HBox prefHeight="29.0" prefWidth="270.0">
                <children>
-                  <ComboBox prefHeight="26.0" prefWidth="170.0" />
+                  <ComboBox fx:id="cmbEspecie" prefHeight="26.0" prefWidth="170.0" />
                </children>
             </HBox>
          </children>
@@ -51,7 +51,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <TextField prefHeight="26.0" prefWidth="170.0" />
+                  <TextField fx:id="txtNombre" prefHeight="26.0" prefWidth="170.0" />
                </children>
             </HBox>
          </children>
@@ -87,7 +87,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <TextField prefWidth="170.0" />
+                  <TextField fx:id="txtHora" prefWidth="170.0" />
                </children>
             </HBox>
          </children>
@@ -141,7 +141,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <ComboBox prefHeight="26.0" prefWidth="170.0" />
+                  <ComboBox fx:id="cmbCiudad" prefHeight="26.0" prefWidth="170.0" />
                </children>
             </HBox>
          </children>
@@ -159,7 +159,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <TextField prefWidth="170.0" />
+                  <TextField fx:id="txtLugar" prefWidth="170.0" />
                </children>
             </HBox>
          </children>
@@ -201,14 +201,14 @@
                <children>
                   <VBox alignment="TOP_RIGHT" prefHeight="138.0" prefWidth="266.0">
                      <children>
-                        <TableView prefHeight="114.0" prefWidth="256.0">
+                        <TableView fx:id="listaPremios" prefHeight="114.0" prefWidth="256.0">
                            <columns>
-                              <TableColumn prefWidth="61.60003739595413" text="Lugar" />
-                              <TableColumn prefWidth="109.59997177124023" text="Descripción" />
-                              <TableColumn prefWidth="84.80000305175781" text="Auspiciante" />
+                              <TableColumn fx:id="colPos" prefWidth="61.60003739595413" text="Lugar" />
+                              <TableColumn fx:id="colDescripcion" prefWidth="109.59997177124023" text="Descripción" />
+                              <TableColumn fx:id="colAuspiciante" prefWidth="84.80000305175781" text="Auspiciante" />
                            </columns>
                         </TableView>
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="botonPremio" mnemonicParsing="false" onAction="#switchToAnadirPremio" text="Añadir Premio" />
                      </children>
                   </VBox>
                </children>

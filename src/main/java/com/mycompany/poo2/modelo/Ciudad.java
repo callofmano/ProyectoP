@@ -34,7 +34,7 @@ public class Ciudad {
 
     @Override
     public String toString() {
-        return nombre + Integer.toString(codigo);
+        return nombre;
     }
 
     public Ciudad() {

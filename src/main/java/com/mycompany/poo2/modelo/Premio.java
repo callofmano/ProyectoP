@@ -1,5 +1,6 @@
 package com.mycompany.poo2.modelo;
 
+import java.lang.reflect.Array;
 
 public class Premio {
     private Posicion pos;
@@ -7,6 +8,7 @@ public class Premio {
     private String descripcion;
     
     private Auspiciante auspiciante;
+    
 
     public Premio(Posicion pos, String descripcion, Auspiciante auspiciante) {
         this.pos = pos;
