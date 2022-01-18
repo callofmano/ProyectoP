@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.poo2;
-import com.mycompany.poo2.modelo.Mascota;
-import com.mycompany.poo2.modelo.Persona;
 import com.mycompany.poo2.modelo.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -33,6 +31,9 @@ import javafx.scene.control.Alert;
 import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
+import javafx.scene.input.MouseEvent;
 /**
  *
  * @author User
@@ -42,9 +43,11 @@ public class CrearconcursoController {
     @FXML ComboBox<Ciudad> cmbCiudad;
     @FXML TextField txtNombre, txtHora, txtLugar ;
     @FXML TableView listaPremios;
-    @FXML private TableColumn<Premio,String> colPos, colDescripcion,colAuspiciante ;
+    @FXML private TableColumn<Premio,String>colDescripcion;
+    @FXML private TableColumn<Premio,Posicion> colPos;
+    @FXML private TableColumn<Premio,Auspiciante>colAuspiciante ;
     @FXML Button botonGuardar, botonCancelar;
-
+    @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
 
 
     @FXML
@@ -65,15 +68,27 @@ public class CrearconcursoController {
         Especie especieArray[] = new Especie[] {Especie.valueOf("PERRO"),Especie.valueOf("GATO")};
         cmbCiudad.getItems().addAll(ciudades);
         cmbEspecie.getItems().addAll(especieArray);
+        /*
+        colDescripcion.setCellValueFactory(new PropertyValueFactory<>("pos"));
+        colAuspiciante.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+        colPos.setCellValueFactory(new PropertyValueFactory<>("auspiciante"));
+        listaPremios.getItems().setAll(Premio.cargarPremios(App.pathPremios));
+        */
     }
     @FXML
     private void guardar(ActionEvent event){
 
         botonGuardar.setOnMouseClicked((MouseEvent ev) -> { 
-
-
-
-
+        String nombre = txtNombre.getText();
+        LocalDate fechaA = fechaActual.getValue();
+        System.out.println(fechaA);
+        LocalDate fechaI = fechaInscripcion.getValue();
+        LocalDate fechaC = fechaCierre.getValue();
+        String hora = txtHora.getText();
+        String lugar = txtHora.getText();
+        Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
+        Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
+        ArrayList <Premio> premios = Premio.cargarPremios(App.pathPremios);
 
         });
         }

@@ -77,7 +77,7 @@ public class Mascota {
     }
 
     public String getFoto(){
-        return foto;
+        return "files/" + nombre + "." + foto;
     }
     
 

@@ -217,7 +217,7 @@
       </HBox>
       <HBox alignment="TOP_CENTER" prefHeight="41.0" prefWidth="367.0">
          <children>
-              <Button fx:id="secondaryButton" text="Guardar" />
+              <Button fx:id="botonGuardar" onAction="#guardar" text="Guardar" />
             <Button fx:id="secondaryButton1" onAction="#switchToAdministarConcursos" text="Cancelar" />
          </children>
       </HBox>
