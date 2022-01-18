@@ -33,6 +33,9 @@ import javafx.scene.control.Alert;
 import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import java.time.LocalDate;
+import javafx.scene.input.MouseEvent;
 /**
  *
  * @author User
@@ -44,7 +47,7 @@ public class CrearconcursoController {
     @FXML TableView listaPremios;
     @FXML private TableColumn<Premio,String> colPos, colDescripcion,colAuspiciante ;
     @FXML Button botonGuardar, botonCancelar;
-
+    @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
 
 
     @FXML
@@ -70,10 +73,15 @@ public class CrearconcursoController {
     private void guardar(ActionEvent event){
 
         botonGuardar.setOnMouseClicked((MouseEvent ev) -> { 
-
-
-
-
+        String nombre = txtNombre.getText();
+        LocalDate fechaA = fechaActual.getValue();
+        LocalDate fechaI = fechaInscripcion.getValue();
+        LocalDate fechaC = fechaCierre.getValue();
+        String hora = txtHora.getText();
+        String lugar = txtHora.getText();
+        Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
+        Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
+        
 
         });
         }
