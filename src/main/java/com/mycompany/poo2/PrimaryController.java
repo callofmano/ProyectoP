@@ -60,7 +60,10 @@ public class PrimaryController {
         alert.setTitle("Dialogo de información");
         alert.setHeaderText("Esto es un dialogo de información");
         alert.setContentText("Usted ha creado una mascota");
-
+        Mascota m = null;
+        botonGuardar.setOnAction(event-> {
+            guardar(event,m);
+        });
         }
 
     @FXML
@@ -72,9 +75,9 @@ public class PrimaryController {
         //return dueno;
         }
     @FXML
-    private void guardar(ActionEvent event){
-        
-        botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
+    private void guardar(ActionEvent event,Mascota mas){
+        if(mas==null){
+            botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
                 Especie especie =null;
                 String e = null;
                 if(gato.isSelected()){
@@ -118,6 +121,77 @@ public class PrimaryController {
 
 
         });
+        }else{
+            System.out.println("prueba de EDITAR //////////////////////////////-------------------------------------------------------------------");
+            
+            //codigo para guardar lo editado en una variable
+            Especie especie =null;
+                String e = null;
+                if(gato.isSelected()){
+                    especie = Especie.valueOf(gato.getText().strip().toUpperCase()); 
+                    e=gato.getText().strip().toLowerCase();
+                    }
+                else if (perro.isSelected()){
+                    especie = Especie.valueOf(perro.getText().strip().toUpperCase());
+                    e = perro.getText().strip().toLowerCase();
+                    }
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                DuenoMascota dueno = null;
+                String date = txtNacimiento.getText();
+                String dates[]= date.split("-");
+                String dateEscribir= dates[2]+"/"+dates[1]+"/"+dates[0];
+                System.out.print(date);
+                LocalDate nacimiento = LocalDate.parse(date);
+                for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
+                if(d.getNombre().equals(comboDueno.getSelectionModel().getSelectedItem())){
+                    dueno= d;
+                    System.out.print(dueno.getCi());
+                    }}
+                  //public Mascota(String nombre, Especie especie, LocalDate fechaNacimiento, String foto, int codigo, String raza,DuenoMascota dueno)  
+                Mascota m = new Mascota(txtNombre.getText(),especie,nacimiento,"png",Integer.valueOf(mas.getCodigo()),txtRaza.getText().toLowerCase(),dueno);
+                
+
+                ArrayList<Mascota> lista= new ArrayList<>();
+                lista=  mas.cargarMascotas(App.pathMascotas);
+                Boolean aux= false;
+                Mascota editable= null;
+                for(Mascota ms : lista){
+                    if(ms.getCodigo().equals(mas.getCodigo())){
+
+                        aux=true;
+                        editable=ms;
+                    }
+                }
+                if(aux){
+                    
+                    lista.add(lista.indexOf(editable),m);
+                    lista.remove(editable);
+                }
+
+                try {
+                    FileWriter writer = new FileWriter(App.pathMascotas);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("id;nombre;tipo;raza;fecha_nac;foto;id_dueno");
+                    for(Mascota mx:lista ){
+                        bufferedWriter.write("\n");
+                        String[] dateWriting=mx.getFechaNacimiento().toString().split("-");
+                        String linea = mx.getCodigo()+";"+mx.getNombre()+";"+mx.getEspecie().toString()+";"+mx.getRaza()+";"+dateWriting[2]+"/"+dateWriting[1]+"/"+dateWriting[0]+";"+"png"+";"+mx.getDueno().getCi();
+                        bufferedWriter.write(linea);
+                        System.out.print(linea);
+                        
+                }
+                bufferedWriter.close();
+                } catch (IOException ex) {
+                    // TODO Auto-generated catch block
+                    ex.printStackTrace();
+                }
+
+                System.out.println(lista);
+                alert.showAndWait();
+                    botonRegresar.setVisible(true);
+
+        }
+        
 
         
 
@@ -125,6 +199,24 @@ public class PrimaryController {
     }
     public void llenarCampos(Mascota m){
         txtNombre.setText(m.getNombre());
+        if(m.getEspecie()==Especie.PERRO){
+            perro.setSelected(true);
+        }else{
+            gato.setSelected(true);
+        }
+        txtNacimiento.setText(m.getFechaNacimiento().toString());
+        txtRaza.setText(m.getRaza());
+        ArrayList <String> duenos = new ArrayList<>();
+        for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
+            duenos.add(d.getNombre());
+            }
+        comboDueno.getItems().addAll(duenos);
+       DuenoMascota d =m.getDueno();
+        comboDueno.getSelectionModel().select(duenos.indexOf(d.getNombre()));
+
+        botonGuardar.setOnAction(event-> {
+            guardar(event,m);
+        });
     }
 
     
