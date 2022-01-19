@@ -77,7 +77,7 @@ public class Mascota {
     }
 
     public String getFoto(){
-        return "files/" + nombre + "." + foto;
+        return nombre;
     }
     
 
@@ -149,7 +149,34 @@ public class Mascota {
         }
         return mascotas;
     }
+    public static ArrayList<String> cargarImagener(String ruta ){
 
+        ArrayList<String> fotos = new ArrayList<>();
+    
+        InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(input))) {
+            String line = br.readLine();
+                while (line != null) {
+                    fotos.add(line.strip());
+                    line = br.readLine();
+                    }
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fotos;
+    }
+    
+    
+    public static String buscadordeFotos(String nombreMascota, ArrayList<String> listaFotos){
+        String enviar="Noexiste";
+        for(String fotos: listaFotos){
+            String lista[] = fotos.split(".");
+            if(lista[0].equals(nombreMascota)){
+                enviar= fotos;
+                }
+            }
+        return enviar;
+    }
 
 
 }

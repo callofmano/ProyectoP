@@ -52,10 +52,12 @@ public class PrimaryController {
     private void initialize(){
     
         ArrayList <String> duenos = new ArrayList<>();
+        ArrayList<String> fotos = Mascota.cargarImagener("com/mycompany/poo2/files/");
         for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
             duenos.add(d.getNombre());
             }
         comboDueno.getItems().addAll(duenos);
+        comboFoto.getItems().addAll(fotos);
         botonRegresar.setVisible(false);
         alert.setTitle("Dialogo de información");
         alert.setHeaderText("Esto es un dialogo de información");
