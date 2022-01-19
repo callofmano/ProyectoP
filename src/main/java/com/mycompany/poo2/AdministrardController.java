@@ -74,7 +74,7 @@ public class AdministrardController {
 
             fxmlLoader.setController(pc);//se asigna el controlador
 
-            FlowPane root = (FlowPane) fxmlLoader.load();
+            VBox root = (VBox) fxmlLoader.load();
             
             pc.llenarCampos(dueno);
             App.changeRoot(root);

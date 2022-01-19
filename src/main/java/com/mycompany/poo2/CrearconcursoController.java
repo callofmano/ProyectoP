@@ -133,7 +133,7 @@ public class CrearconcursoController {
         LocalDate fechaI = fechaInscripcion.getValue();
         LocalDate fechaC = fechaCierre.getValue();
         String hora = txtHora.getText();
-        String lugar = txtHora.getText();
+        String lugar = txtLugar.getText();
         Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
         Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
 
@@ -153,7 +153,7 @@ public class CrearconcursoController {
                 BufferedWriter bufferedWriter = new BufferedWriter(writer);
                 bufferedWriter.write("\n");
                 //codigo;nombre;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7
-                String linea = conc.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+";"+listaPremios.getItems().toString()+";";
+                String linea = conc.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+lugar+";"+";"+listaPremios.getItems().toString()+";";
                 bufferedWriter.write(linea);
                 System.out.print(linea);
                 bufferedWriter.close();

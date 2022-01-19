@@ -128,8 +128,8 @@ public class Mascota {
                 int codigo = Integer.valueOf(datos[0].strip());
                 Especie e = Especie.valueOf(datos[2].strip().toUpperCase());
                
-                String linea2[] = datos[4].split("/");
-                LocalDate nacimiento = LocalDate.of(Integer.valueOf(linea2[2].strip()), Integer.valueOf(linea2[1].strip()), Integer.valueOf(linea2[0].strip()));
+                String linea2[] = datos[4].split("-");
+                LocalDate nacimiento = LocalDate.of(Integer.valueOf(linea2[0].strip()), Integer.valueOf(linea2[1].strip()), Integer.valueOf(linea2[2].strip()));
                 String foto = datos[5].strip();
                 String raza = datos[3].strip();
             
