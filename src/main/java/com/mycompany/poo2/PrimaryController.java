@@ -102,12 +102,13 @@ public class PrimaryController {
                     dueno= d;
                     System.out.print(dueno.getCi());
                     }}
-                Mascota m = new Mascota(txtNombre.getText(),txtRaza.getText().toLowerCase(),nacimiento,"png",especie,dueno);
+                String foto = comboFoto.getSelectionModel().getSelectedItem();
+                Mascota m = new Mascota(txtNombre.getText(),txtRaza.getText().toLowerCase(),nacimiento,foto,especie,dueno);
                 try{
                     FileWriter writer = new FileWriter(App.pathMascotas,true);
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);
                     bufferedWriter.write("\n");
-                    String linea = m.getCodigo()+";"+m.getNombre()+";"+e+";"+txtRaza.getText()+";"+dateEscribir+";"+"png"+";"+dueno.getCi();
+                    String linea = m.getCodigo()+";"+m.getNombre()+";"+e+";"+txtRaza.getText()+";"+dateEscribir+";"+foto+";"+dueno.getCi();
                     bufferedWriter.write(linea);
                     System.out.print(linea);
                     bufferedWriter.close();
@@ -118,9 +119,6 @@ public class PrimaryController {
         catch(IOException er){
             er.printStackTrace();
         }
-
-        
-
 
         });
         }else{
@@ -143,6 +141,7 @@ public class PrimaryController {
                 String dates[]= date.split("-");
                 String dateEscribir= dates[2]+"/"+dates[1]+"/"+dates[0];
                 System.out.print(date);
+                String foto = comboFoto.getSelectionModel().getSelectedItem();
                 LocalDate nacimiento = LocalDate.parse(date);
                 for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
                 if(d.getNombre().equals(comboDueno.getSelectionModel().getSelectedItem())){
@@ -150,7 +149,7 @@ public class PrimaryController {
                     System.out.print(dueno.getCi());
                     }}
                   //public Mascota(String nombre, Especie especie, LocalDate fechaNacimiento, String foto, int codigo, String raza,DuenoMascota dueno)  
-                Mascota m = new Mascota(txtNombre.getText(),especie,nacimiento,"png",Integer.valueOf(mas.getCodigo()),txtRaza.getText().toLowerCase(),dueno);
+                Mascota m = new Mascota(txtNombre.getText(),especie,nacimiento,foto,Integer.valueOf(mas.getCodigo()),txtRaza.getText().toLowerCase(),dueno);
                 
 
                 ArrayList<Mascota> lista= new ArrayList<>();
