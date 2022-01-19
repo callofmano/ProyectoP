@@ -55,6 +55,26 @@ private void initialize (){
     agregarOpciones();
     }
 
+    public void switchToEdit(Concurso con) throws IOException{
+        //App.setRoot("primary");
+
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("crearconcurso.fxml"));//no tiene el controlador especificado
+            CrearconcursoController pc = new CrearconcursoController();
+
+            fxmlLoader.setController(pc);//se asigna el controlador
+
+            VBox root = (VBox) fxmlLoader.load();
+            
+            pc.llenarCampos(con);
+            App.changeRoot(root);
+
+        }catch(IOException ex){
+            ex.printStackTrace();
+        }
+        
+    }
+
     @FXML
     private void switchToCrearConcursos() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("crearconcurso.fxml"));//no tiene el controlador especificado
@@ -95,6 +115,12 @@ private void initialize (){
                             Button btnEd = new Button("Editar");
                             //System.out.print(mas.toString());
                             btnEd.setOnAction(e ->{
+                                try {
+                                    switchToEdit(mas);
+                                } catch (IOException e1) {
+                                    // TODO Auto-generated catch block
+                                    e1.printStackTrace();
+                                }
                             });
 
 
