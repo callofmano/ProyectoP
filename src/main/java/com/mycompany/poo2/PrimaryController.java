@@ -12,6 +12,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -39,6 +41,8 @@ public class PrimaryController {
     private RadioButton perro,gato;
     @FXML
     private Button botonGuardar,botonRegresar;
+    @FXML
+    private ImageView imageCrear;
     @FXML
     private ComboBox <String> comboDueno, comboFoto;
     @FXML
@@ -68,6 +72,19 @@ public class PrimaryController {
         });
         }
 
+    @FXML
+    private void comboimagen (){
+        String foto = comboFoto.getValue();
+        InputStream input = null;
+        try{
+            input = App.class.getResource("files/" + foto).openStream();
+            Image image = new Image(input,100,100,false,false);
+            imageCrear.setImage(image);
+        } catch (Exception ex){
+            ex.getMessage();
+        }
+    }
+        
     @FXML
     private void comboboxEvent (ActionEvent e){
         Object evt =e.getSource();

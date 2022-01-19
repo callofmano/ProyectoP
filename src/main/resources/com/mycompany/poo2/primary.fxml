@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -110,7 +111,7 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="195.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="163.0">
                <children>
-                  <ComboBox fx:id="comboFoto" prefWidth="150.0">
+                  <ComboBox fx:id="comboFoto" onAction="#comboimagen" prefWidth="150.0">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -153,6 +154,11 @@
                   <Insets left="250.0" />
                </VBox.margin>
             </Button>
+            <ImageView fx:id="imageCrear" fitHeight="103.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets left="230.0" />
+               </VBox.margin>
+            </ImageView>
          </children>
       </VBox>
    </children>
