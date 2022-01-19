@@ -1,7 +1,5 @@
-/*package com.mycompany.poo2.modelo;
-
-package espol.poo.empadminjar;
-
+/*
+package com.mycompany.poo2.modelo;
 import java.util.Properties;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -11,8 +9,8 @@ import javax.mail.*;
 /**
  *
  * @author User
- */
-/*public class Correo {
+ 
+public class Correo {
     
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
         // Esto es lo que va delante de @gmail.com en tu cuenta de correo. Es el remitente también.
@@ -49,4 +47,5 @@ import javax.mail.*;
         }
     }
     
-}*/
+}
+*/

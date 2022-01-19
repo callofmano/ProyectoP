@@ -41,8 +41,38 @@ public class Concurso {
     
     //creando contructor que se use en el main para pre generar los datos que deben estar cargados
 
+    public Concurso(int codigo,String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.fechaInsc = fechaInsc;
+        this.fechaCierre = fechaCierre;
+        this.ciudad = ciudad;
+        this.lugar = lugar;
+        this.inscritos = inscritos;
+        this.premios = premios;
+        this.ganadores = ganadores;
+        this.dirigido = dirigido;
+    }
+
+    
+    //generando constructor sin mascotas inscritas ni ganadores
+
+    public Concurso(int codigo, String nombre,Especie dirigido , LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.fechaInsc = fechaInsc;
+        this.fechaCierre = fechaCierre;
+        this.ciudad = ciudad;
+        this.lugar = lugar;
+        this.premios = premios;
+        this.dirigido = dirigido;
+    }
     public Concurso(String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores) {
-        codigo = contador++;
+        this.codigo = contador++;
         this.nombre = nombre;
         this.fecha = fecha;
         this.hora = hora;
@@ -60,7 +90,7 @@ public class Concurso {
     //generando constructor sin mascotas inscritas ni ganadores
 
     public Concurso(String nombre,Especie dirigido , LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
-        codigo = contador++;
+        this.codigo = contador++;
         this.nombre = nombre;
         this.fecha = fecha;
         this.hora = hora;
@@ -71,7 +101,6 @@ public class Concurso {
         this.premios = premios;
         this.dirigido = dirigido;
     }
-
     
     
 //getters
@@ -230,7 +259,8 @@ public class Concurso {
             ArrayList<Premio> premios = new ArrayList<>();
             //,Especie dirigido , LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios
             if(datos[9].equals(" ") && datos[11].equals(" ")){
-                Concurso concurso = new Concurso(nombre,especie,fechaActual,hora,fechaInscripcion,fechaCierre,ciudad,lugar,premios);
+                Concurso concurso = new Concurso(codigo, nombre,especie,fechaActual,hora,fechaInscripcion,fechaCierre,ciudad,lugar,premios);
+                contador=codigo+1;
                 concursos.add(concurso);
                 }
             else{
@@ -254,7 +284,8 @@ public class Concurso {
                         }
                     }
             //String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores
-            Concurso concurso = new Concurso (nombre,especie,fechaActual,hora,fechaInscripcion,fechaCierre,ciudad,lugar,mascotasInscritas,premios,mascotasGanadoras);
+            Concurso concurso = new Concurso (codigo,nombre,especie,fechaActual,hora,fechaInscripcion,fechaCierre,ciudad,lugar,mascotasInscritas,premios,mascotasGanadoras);
+            contador=codigo+1;
             concursos.add(concurso);     
             } 
             line= br.readLine();          

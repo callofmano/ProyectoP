@@ -43,6 +43,7 @@ import javafx.scene.input.MouseEvent;
  * @author User
  */
 public class CrearconcursoController {
+    @FXML Alert alert = new Alert(AlertType.INFORMATION);
     public static ArrayList<Premio> premiosActuales;
     public static boolean isEditing;
     @FXML ComboBox<Especie> cmbEspecie;
@@ -53,7 +54,7 @@ public class CrearconcursoController {
     @FXML private TableColumn<Premio,String>colDescripcion;
     @FXML private TableColumn<Premio,Posicion> colPos;
     @FXML private TableColumn<Premio,String>colAuspiciante ;
-    @FXML Button botonGuardar, botonCancelar,botonPremio;
+    @FXML Button botonGuardar, botonCancelar,botonPremio,botonRegresar;
     @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
     @FXML HBox hboxPremio;
 
@@ -96,8 +97,10 @@ public class CrearconcursoController {
             auspiciantes.add(aus);
         }
         cmbAuspiciantes.getItems().addAll(auspiciantes);
-
-    
+        alert.setTitle("Dialogo de información");
+        alert.setHeaderText("Esto es un dialogo de información");
+        alert.setContentText("Usted ha creado un concurso");
+        botonRegresar.setVisible(false);
         
         
 
@@ -157,9 +160,8 @@ public class CrearconcursoController {
                 bufferedWriter.write(linea);
                 System.out.print(linea);
                 bufferedWriter.close();
-                //alert.showAndWait();
-                
-
+                alert.showAndWait();
+                botonRegresar.setVisible(true);
                 }
     catch(IOException er){
         er.printStackTrace();
@@ -181,4 +183,16 @@ public class CrearconcursoController {
         );
         listaPremios.getItems().setAll(p);
         }
+
+
+        @FXML
+        private void switchToMenuPrincipal() throws IOException{
+            App.setRoot("menuprincipal");
+        }
+
+
+
+
+
+
 }
