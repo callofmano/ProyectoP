@@ -77,7 +77,7 @@ public class Mascota {
     }
 
     public String getFoto(){
-        return nombre;
+        return foto;
     }
     
 
@@ -167,7 +167,7 @@ public class Mascota {
     }
     
     
-    public static String buscadordeFotos(String nombreMascota, ArrayList<String> listaFotos){
+    /*public static String buscadordeFotos(String nombreMascota, ArrayList<String> listaFotos){
         String enviar="Noexiste";
         for(String fotos: listaFotos){
             String lista[] = fotos.split(".");
@@ -176,7 +176,7 @@ public class Mascota {
                 }
             }
         return enviar;
-    }
+    }*/
 
 
 }

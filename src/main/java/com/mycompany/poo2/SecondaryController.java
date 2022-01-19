@@ -122,8 +122,8 @@ public class SecondaryController {
             for(Mascota m:lista ){
                 bufferedWriter.write("\n");
                 String[] date=m.getFechaNacimiento().toString().split("-");
-                String foto = Mascota.buscadordeFotos(m.getNombre(), m.cargarImagener("com/mycompany/poo2/files/"));
-                String linea = m.getCodigo()+";"+m.getNombre()+";"+m.getEspecie().toString()+";"+m.getRaza()+";"+date[2]+"-"+date[1]+"-"+date[0]+";"+m.getFoto()+";"+m.getDueno().getCi();
+                //String foto = Mascota.buscadordeFotos(m.getNombre(), m.cargarImagener("com/mycompany/poo2/files/"));
+                String linea = m.getCodigo()+";"+m.getNombre()+";"+m.getEspecie().toString()+";"+m.getRaza()+";"+date[0]+"-"+date[1]+"-"+date[2]+";"+m.getFoto()+";"+m.getDueno().getCi();
                 bufferedWriter.write(linea);
                 System.out.print(linea);
                 
