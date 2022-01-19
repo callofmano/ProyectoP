@@ -58,22 +58,22 @@
             </VBox>
             <VBox prefHeight="266.0" prefWidth="208.0">
                <children>
-                  <Label fx:id="labelNombre" text="Label">
+                  <Label fx:id="labelNombre" prefHeight="19.0" prefWidth="51.0" text="Label">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="labelFecha" text="Label">
+                  <Label fx:id="labelFecha" prefHeight="25.0" prefWidth="83.0" text="Label">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="labelRaza" text="Label">
+                  <Label fx:id="labelRaza" prefHeight="18.0" prefWidth="67.0" text="Label">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label fx:id="labelDueno" text="Label">
+                  <Label fx:id="labelDueno" prefHeight="20.0" prefWidth="45.0" text="Label">
                      <VBox.margin>
                         <Insets left="20.0" top="20.0" />
                      </VBox.margin>

@@ -36,18 +36,16 @@ public class DetalleMascotaController {
         labelDueno.setText(m.getDueno().getNombre()+" "+m.getDueno().getApellido());
         labelFecha.setText(m.getFechaNacimiento().toString());
         labelRaza.setText(m.getRaza());
-        /*
+
         InputStream input = null;
         try{
-            input = App.class.getResource(m.getFoto()).openStream();
-
+            input = App.class.getResource("files/"+m.getNombre()+".png").openStream();
             Image img = new Image(input,50,50,false,false);
             imageView.setImage(img);
             
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-        */
     }
     
     public void regresar() throws IOException{
