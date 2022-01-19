@@ -108,17 +108,8 @@ public class Concurso {
         return ganadores;
     }
     
-    
-    
-    
-    
-    
-    
-    
     //to strings
-    
-    
-    
+
     @Override
     public String toString() {
         return "Concurso{" + "codigo=" + codigo + ", nombre=" + nombre + ", fecha=" + fecha + ", hora=" + hora + ", fechaInsc=" + fechaInsc + ", fechaCierre=" + fechaCierre + ", ciudad=" + ciudad + ", lugar=" + lugar + ", inscritos=" + inscritos + ", premios=" + premios + ", ganadores=" + ganadores + '}';

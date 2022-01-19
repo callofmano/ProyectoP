@@ -122,6 +122,7 @@ public class SecondaryController {
             for(Mascota m:lista ){
                 bufferedWriter.write("\n");
                 String[] date=m.getFechaNacimiento().toString().split("-");
+                String foto = Mascota.buscadordeFotos(m.getNombre(), m.cargarImagener("com/mycompany/poo2/files/"));
                 String linea = m.getCodigo()+";"+m.getNombre()+";"+m.getEspecie().toString()+";"+m.getRaza()+";"+date[2]+"/"+date[1]+"/"+date[0]+";"+"png"+";"+m.getDueno().getCi();
                 bufferedWriter.write(linea);
                 System.out.print(linea);
