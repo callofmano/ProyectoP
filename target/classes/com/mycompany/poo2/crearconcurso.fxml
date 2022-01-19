@@ -67,7 +67,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <DatePicker />
+                  <DatePicker fx:id="fechaActual" />
                </children>
             </HBox>
          </children>
@@ -103,7 +103,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <DatePicker />
+                  <DatePicker fx:id="fechaInscripcion" />
                </children>
             </HBox>
          </children>
@@ -121,7 +121,7 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="270.0">
                <children>
-                  <DatePicker />
+                  <DatePicker fx:id="fechaCierre" />
                </children>
             </HBox>
          </children>

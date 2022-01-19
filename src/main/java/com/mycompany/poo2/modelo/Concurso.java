@@ -8,6 +8,8 @@ import java.util.*;
 public class Concurso {
     
     private static int contador = 1;
+
+    private Especie dirigido;
     
     public int codigo ;
     
@@ -36,7 +38,7 @@ public class Concurso {
     
     //creando contructor que se use en el main para pre generar los datos que deben estar cargados
 
-    public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores) {
+    public Concurso(String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores) {
         codigo = contador++;
         this.nombre = nombre;
         this.fecha = fecha;
@@ -48,12 +50,13 @@ public class Concurso {
         this.inscritos = inscritos;
         this.premios = premios;
         this.ganadores = ganadores;
+        this.dirigido = dirigido;
     }
 
     
     //generando constructor sin mascotas inscritas ni ganadores
 
-    public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+    public Concurso(String nombre,Especie dirigido , LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
         codigo = contador++;
         this.nombre = nombre;
         this.fecha = fecha;
@@ -63,6 +66,7 @@ public class Concurso {
         this.ciudad = ciudad;
         this.lugar = lugar;
         this.premios = premios;
+        this.dirigido = dirigido;
     }
 
     

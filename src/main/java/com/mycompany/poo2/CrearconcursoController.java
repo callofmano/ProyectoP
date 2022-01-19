@@ -137,6 +137,34 @@ public class CrearconcursoController {
         Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
         Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
 
+        //public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+            ArrayList<Premio> premios = new ArrayList<>();
+            
+            //creando el objeto
+
+            Concurso conc = new Concurso(nombre, dirigiadoA, fechaA, hora, fechaI, fechaC, ciudad, lugar, premios);
+            System.out.println(conc);
+
+
+
+            //escribiendo en el doc 
+            try{
+                FileWriter writer = new FileWriter(App.pathConcursos,true);
+                BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                bufferedWriter.write("\n");
+                //codigo;nombre;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7
+                String linea = conc.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+";"+listaPremios.getItems().toString()+";";
+                bufferedWriter.write(linea);
+                System.out.print(linea);
+                bufferedWriter.close();
+                //alert.showAndWait();
+                
+
+                }
+    catch(IOException er){
+        er.printStackTrace();
+    }
+
 
         });
         }
