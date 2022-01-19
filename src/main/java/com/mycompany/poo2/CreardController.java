@@ -45,6 +45,7 @@ public class CreardController {
         botonRegresar.setVisible(false);
         alert.setHeaderText("Esto es un dialogo de información");
         alert.setContentText("Usted ha creado un dueño");
+        
         }
 
     

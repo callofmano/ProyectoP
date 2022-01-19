@@ -48,7 +48,14 @@ public class AdministrardController {
     private TableColumn<DuenoMascota,Void> colOpciones;
     @FXML
     private void switchToCreard() throws IOException {
-        App.setRoot("creard");
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("creard.fxml"));//no tiene el controlador especificado
+            CreardController pc = new CreardController();
+
+            fxmlLoader.setController(pc);//se asigna el controlador
+
+            VBox root = (VBox) fxmlLoader.load();
+            
+            App.changeRoot(root);
     }
     @FXML
     private void switchToMenuPrincipal() throws IOException{
