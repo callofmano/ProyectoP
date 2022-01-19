@@ -26,7 +26,6 @@ public class Ciudad {
         this.provincia = provinicia;
     }
     public Ciudad(int codigo, String nombre, String provinicia) {
-        this.codigo = codigo;
         this.nombre = nombre;
         this.provincia = provinicia;
         this.codigo = codigo;
@@ -52,7 +51,8 @@ public class Ciudad {
         ArrayList<Ciudad> ciudades = new ArrayList<>();
         InputStream input = Persona.class.getClassLoader().getResourceAsStream(ruta);
         try(BufferedReader br =new BufferedReader(new FileReader(ruta))){
-        String line = br.readLine();
+            String line = br.readLine();//escapar cabecera
+            line = br.readLine();
         while (line != null){
             String datos[] = line.split(",");
             int codigo =   Integer.valueOf(datos[0].strip());

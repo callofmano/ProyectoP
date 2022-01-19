@@ -21,7 +21,7 @@
           <TableColumn fx:id="colNombre" prefWidth="104.79993438720703" text="Nombre" />
             <TableColumn fx:id="colFecha" prefWidth="74.39996337890625" text="Fecha" />
             <TableColumn fx:id="colCiudad" prefWidth="76.800048828125" text="Ciudad" />
-            <TableColumn prefWidth="320.7999572753906" text="Opciones" />
+            <TableColumn fx:id="colOpciones" prefWidth="320.7999572753906" text="Opciones" />
         </columns>
       </TableView>
       <HBox alignment="CENTER" prefHeight="52.0" prefWidth="494.0">

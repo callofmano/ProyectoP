@@ -124,8 +124,8 @@ public class Concurso {
         return fechaCierre;
     }
 
-    public String getCiudad() {
-        return ciudad.toString();
+    public Ciudad getCiudad() {
+        return ciudad;
     }
 
     public String getLugar() {
@@ -143,6 +143,11 @@ public class Concurso {
     public ArrayList<Mascota> getGanadores() {
         return ganadores;
     }
+
+    public Especie getDirigido() {
+        return dirigido;
+    }
+
     
     //to strings
 
@@ -153,11 +158,6 @@ public class Concurso {
 
     public static void setContador(int contador) {
         Concurso.contador = contador;
-    }
-
-
-    public Especie getDirigido() {
-        return dirigido;
     }
 
 

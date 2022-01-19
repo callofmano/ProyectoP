@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+
 import java.time.LocalDate;
 import javafx.scene.input.MouseEvent;
 /**
@@ -47,14 +49,20 @@ public class CrearconcursoController {
     public static ArrayList<Premio> premiosActuales;
     public static boolean isEditing;
     @FXML ComboBox<Especie> cmbEspecie;
+    @FXML Alert alert = new Alert(AlertType.INFORMATION);
     @FXML ComboBox<Ciudad> cmbCiudad;
     @FXML ComboBox<Auspiciante> cmbAuspiciantes;
     @FXML TextField txtNombre, txtHora, txtLugar ;
+    @FXML Label lbltitulo;
     @FXML TableView listaPremios;
     @FXML private TableColumn<Premio,String>colDescripcion;
     @FXML private TableColumn<Premio,Posicion> colPos;
     @FXML private TableColumn<Premio,String>colAuspiciante ;
+<<<<<<< HEAD
     @FXML Button botonGuardar, botonCancelar,botonPremio,botonRegresar;
+=======
+    @FXML Button botonGuardar, botonCancelar,botonPremio, botonRegresar;
+>>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
     @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
     @FXML HBox hboxPremio;
 
@@ -97,10 +105,15 @@ public class CrearconcursoController {
             auspiciantes.add(aus);
         }
         cmbAuspiciantes.getItems().addAll(auspiciantes);
+<<<<<<< HEAD
         alert.setTitle("Dialogo de información");
         alert.setHeaderText("Esto es un dialogo de información");
         alert.setContentText("Usted ha creado un concurso");
         botonRegresar.setVisible(false);
+=======
+        botonRegresar.setVisible(false);
+    
+>>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
         
         
 
@@ -184,6 +197,7 @@ public class CrearconcursoController {
         listaPremios.getItems().setAll(p);
         }
 
+<<<<<<< HEAD
 
         @FXML
         private void switchToMenuPrincipal() throws IOException{
@@ -195,4 +209,129 @@ public class CrearconcursoController {
 
 
 
+=======
+        @FXML
+    private void guardar(ActionEvent event,Concurso dueno){
+        if(dueno==null){
+            botonGuardar.setOnMouseClicked((MouseEvent ev) -> { 
+                String nombre = txtNombre.getText();
+                LocalDate fechaA = fechaActual.getValue();
+                System.out.println(fechaA);
+                LocalDate fechaI = fechaInscripcion.getValue();
+                LocalDate fechaC = fechaCierre.getValue();
+                String hora = txtHora.getText();
+                String lugar = txtLugar.getText();
+                Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
+                Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
+        
+                //public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+                    ArrayList<Premio> premios = new ArrayList<>();
+                    
+                    //creando el objeto
+        
+                    Concurso conc = new Concurso(nombre, dirigiadoA, fechaA, hora, fechaI, fechaC, ciudad, lugar, premios);
+                    System.out.println(conc);
+        
+        
+        
+                    //escribiendo en el doc 
+                    try{
+                        FileWriter writer = new FileWriter(App.pathConcursos,true);
+                        BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                        bufferedWriter.write("\n");
+                        //codigo;nombre;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7
+                        String linea = conc.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+lugar+";"+";"+listaPremios.getItems().toString()+";";
+                        bufferedWriter.write(linea);
+                        System.out.print(linea);
+                        bufferedWriter.close();
+                        //alert.showAndWait();
+                        
+        
+                        }
+            catch(IOException er){
+                er.printStackTrace();
+            }
+        });
+        }else{
+            //System.out.println("prueba de EDITAR //////////////////////////////--------");
+            
+            //codigo para guardar lo editado en una variable
+            String nombre = txtNombre.getText();
+                LocalDate fechaA = fechaActual.getValue();
+                System.out.println(fechaA);
+                LocalDate fechaI = fechaInscripcion.getValue();
+                LocalDate fechaC = fechaCierre.getValue();
+                String hora = txtHora.getText();
+                String lugar = txtLugar.getText();
+                Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
+                Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
+        
+                //public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+                    ArrayList<Premio> premios = new ArrayList<>();
+                    
+                    //creando el objeto
+        
+                    Concurso conc = new Concurso(nombre, dirigiadoA, fechaA, hora, fechaI, fechaC, ciudad, lugar, premios);
+                    System.out.println(conc);
+                
+                ArrayList<Concurso> lista= Concurso.cargarConcursos(App.pathConcursos);
+                Boolean aux= false;
+                Concurso editable= null;
+                for(Concurso duen : lista){
+                    if(String.valueOf(duen.getCodigo()).equals(String.valueOf(dueno.getCodigo()))){
+                        aux=true;
+                        editable=duen;
+                    }
+                }
+                if(aux){
+                    
+                    lista.add(lista.indexOf(editable),conc);
+                    lista.remove(editable);
+                }
+
+                try {
+                    FileWriter writer = new FileWriter(App.pathConcursos);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("codigo;nombre;especie;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7");
+                    for(Concurso d:lista ){
+                        bufferedWriter.write("\n");
+                        String linea = d.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+lugar+";"+";"+listaPremios.getItems().toString()+";";
+                        bufferedWriter.write(linea);
+                        System.out.print(linea);
+                        
+                }
+                bufferedWriter.close();
+                } catch (IOException ex) {
+                    // TODO Auto-generated catch block
+                    ex.printStackTrace();
+                }
+
+                System.out.println(lista);
+                    alert.showAndWait();
+                    botonRegresar.setVisible(true);
+        }
+    }
+
+        public void llenarCampos(Concurso con){
+            lbltitulo.setText("EDITAR CONCURSO");
+            txtNombre.setText(con.getNombre());
+            txtHora.setText(con.getHora());
+            txtLugar.setText(con.getLugar());
+            cmbEspecie.getSelectionModel().select(con.getDirigido());
+            fechaActual.setValue(LocalDate.parse(con.getFecha()));
+            fechaCierre.setValue(con.getFechaCierre());
+            fechaInscripcion.setValue(con.getFechaCierre());
+            cmbCiudad.getSelectionModel().select(con.getCiudad());
+            /*ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
+            for(Auspiciante aus:Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+            auspiciantes.add(aus);
+            }
+            ArrayList<Premio> premio = con.getPremios();
+            cmbAuspiciantes.getSelectionModel().select();*/
+
+            botonGuardar.setOnAction(event-> {
+                guardar(event,con);
+            });
+        }
+>>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
 }

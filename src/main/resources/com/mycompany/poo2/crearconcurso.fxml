@@ -14,7 +14,7 @@
 
 <VBox alignment="CENTER" prefHeight="736.0" prefWidth="569.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label text="Crear Concurso">
+        <Label fx:id="lbltitulo" text="Crear Concurso">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Label>
@@ -205,6 +205,7 @@
          <children>
               <Button fx:id="botonGuardar" onAction="#guardar" text="Guardar" />
             <Button fx:id="secondaryButton1" onAction="#switchToAdministarConcursos" text="Cancelar" />
+            <Button fx:id="botonRegresar" onAction="#switchToAdministarConcursos" text="Regresar" />
          </children>
       </HBox>
       <Button fx:id="botonRegresar" mnemonicParsing="false" onAction="#switchToMenuPrincipal" text="Regresar" />
