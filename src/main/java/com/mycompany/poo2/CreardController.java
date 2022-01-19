@@ -15,6 +15,7 @@ import java.io.FileWriter;
 import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.Button;
 import java.util.ArrayList;
 import javafx.scene.input.MouseEvent;
@@ -31,9 +32,14 @@ public class CreardController {
     @FXML
     private Button botonGuardar,botonRegresar;
     @FXML
+    private Label lbltitulo;
+
+
+    @FXML
     private void switchToAdministrarDuenos() throws IOException {
         App.setRoot("administrard");
     }
+    
     @FXML
     private void initialize(){
         
@@ -189,7 +195,7 @@ public class CreardController {
             ciudades.add(c.getNombre());
         }
         comboCiudad.getItems().addAll(ciudades);
-        comboCiudad.getSelectionModel().select(ciudades.indexOf(dueno.getCiudad().getNombre()));
+        comboCiudad.getSelectionModel().select(ciudades.indexOf(dueno.getCiudad()));
 
         botonGuardar.setOnAction(event-> {
             guardar(event,dueno);

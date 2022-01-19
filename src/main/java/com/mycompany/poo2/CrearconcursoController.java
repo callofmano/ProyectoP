@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+
 import java.time.LocalDate;
 import javafx.scene.input.MouseEvent;
 /**
@@ -46,9 +48,11 @@ public class CrearconcursoController {
     public static ArrayList<Premio> premiosActuales;
     public static boolean isEditing;
     @FXML ComboBox<Especie> cmbEspecie;
+    @FXML Alert alert = new Alert(AlertType.INFORMATION);
     @FXML ComboBox<Ciudad> cmbCiudad;
     @FXML ComboBox<Auspiciante> cmbAuspiciantes;
     @FXML TextField txtNombre, txtHora, txtLugar ;
+    @FXML Label lbltitulo;
     @FXML TableView listaPremios;
     @FXML private TableColumn<Premio,String>colDescripcion;
     @FXML private TableColumn<Premio,Posicion> colPos;
@@ -285,14 +289,22 @@ public class CrearconcursoController {
     }
 
         public void llenarCampos(Concurso con){
+            lbltitulo.setText("EDITAR CONCURSO");
             txtNombre.setText(con.getNombre());
             txtHora.setText(con.getHora());
             txtLugar.setText(con.getLugar());
-
-            Especie especieArray[] = new Especie[] {Especie.valueOf("PERRO"),Especie.valueOf("GATO"),Especie.valueOf("TODOS")};
-            cmbEspecie.getItems().addAll(especieArray);
             cmbEspecie.getSelectionModel().select(con.getDirigido());
-    
+            fechaActual.setValue(LocalDate.parse(con.getFecha()));
+            fechaCierre.setValue(con.getFechaCierre());
+            fechaInscripcion.setValue(con.getFechaCierre());
+            cmbCiudad.getSelectionModel().select(con.getCiudad());
+            /*ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
+            for(Auspiciante aus:Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+            auspiciantes.add(aus);
+            }
+            ArrayList<Premio> premio = con.getPremios();
+            cmbAuspiciantes.getSelectionModel().select();*/
+
             botonGuardar.setOnAction(event-> {
                 guardar(event,con);
             });
