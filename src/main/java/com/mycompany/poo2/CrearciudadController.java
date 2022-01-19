@@ -40,6 +40,8 @@ public class CrearciudadController {
     @FXML
     private TextField txtNombre;
     @FXML
+    private TextField txtcodigo;
+    @FXML
     private ComboBox <String> comboProvincia;
     @FXML
     private Button botonGuardar,botonRegresar; 
@@ -87,4 +89,91 @@ public class CrearciudadController {
         });
     }
     
+    @FXML
+    private void guardar(ActionEvent event,Ciudad ciudad){
+        if(ciudad==null){
+            botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
+                String nombre = txtNombre.getText();
+                int codigo = Integer.valueOf(txtcodigo.getText());
+                String provincia = (String) comboProvincia.getSelectionModel().getSelectedItem();
+
+                Ciudad ciu = new Ciudad(codigo,nombre,provincia);
+                try{
+                    FileWriter writer = new FileWriter(App.pathCiudades,true);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("\n");
+                    String linea = ciu.getCodigo() + "," + ciu.getNombre()+","+ciu.getProvincia();
+                    bufferedWriter.write(linea);
+                    System.out.print(linea);
+                    bufferedWriter.close();
+                    alert.showAndWait();
+                    botonRegresar.setVisible(true);
+
+                    }
+        catch(IOException er){
+            er.printStackTrace();
+        }
+        });
+        }else{
+            //System.out.println("prueba de EDITAR //////////////////////////////--------");
+            
+            //codigo para guardar lo editado en una variable
+            String nombre = txtNombre.getText();
+            int codigo = Integer.valueOf(txtcodigo.getText());
+            String provincia = (String) comboProvincia.getSelectionModel().getSelectedItem();
+
+            Ciudad ciu = new Ciudad(codigo,nombre,provincia);
+                
+                ArrayList<Ciudad> lista= Ciudad.generarCiudad(App.pathCiudades);
+                Boolean aux= false;
+                Ciudad editable= null;
+                for(Ciudad ciud : lista){
+                    if(ciud.getCodigo().equals(ciudad.getCodigo())){
+                        aux=true;
+                        editable=ciud;
+                    }
+                }
+                if(aux){
+                    
+                    lista.add(lista.indexOf(editable),ciu);
+                    lista.remove(editable);
+                }
+
+                try {
+                    FileWriter writer = new FileWriter(App.pathCiudades);
+                    BufferedWriter bufferedWriter = new BufferedWriter(writer);
+                    bufferedWriter.write("id,apellidos,nombres,direccion,telefono,ciudad,email,,,,,,,");
+                    for(Ciudad d:lista ){
+                        bufferedWriter.write("\n");
+                        String linea = ciu.getCodigo() + "," + ciu.getNombre()+","+ciu.getProvincia();
+                        bufferedWriter.write(linea);
+                        System.out.print(linea);
+                        
+                }
+                bufferedWriter.close();
+                } catch (IOException ex) {
+                    // TODO Auto-generated catch block
+                    ex.printStackTrace();
+                }
+
+                System.out.println(lista);
+                alert.showAndWait();
+                    botonRegresar.setVisible(true);
+        }
+    }
+
+    public void llenarCampos(Ciudad ciudad){
+        txtNombre.setText(ciudad.getNombre());
+        txtcodigo.setText(ciudad.getCodigo());
+        ArrayList <String> provincias = new ArrayList<>();
+        for (Ciudad c:Ciudad.generarCiudad(App.pathCiudades)){
+            provincias.add(c.getProvincia());
+        }
+        comboProvincia.getItems().addAll(provincias);
+        comboProvincia.getSelectionModel().select(provincias.indexOf(ciudad.getProvincia()));
+
+        botonGuardar.setOnAction(event-> {
+            guardar(event,ciudad);
+        });
+    }
 }

@@ -26,7 +26,6 @@ public class Ciudad {
         this.provincia = provinicia;
     }
     public Ciudad(int codigo, String nombre, String provinicia) {
-        this.codigo = codigo;
         this.nombre = nombre;
         this.provincia = provinicia;
         this.codigo = codigo;
