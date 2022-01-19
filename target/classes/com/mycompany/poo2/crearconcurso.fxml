@@ -5,16 +5,14 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="736.0" prefWidth="479.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.CrearconcursoController">
+<VBox alignment="CENTER" prefHeight="736.0" prefWidth="569.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label text="Crear Concurso">
          <font>
@@ -164,7 +162,7 @@
             </HBox>
          </children>
       </HBox>
-      <HBox prefHeight="91.0" prefWidth="367.0">
+      <HBox prefHeight="36.0" prefWidth="439.0">
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
@@ -175,42 +173,30 @@
                   </Label>
                </children>
             </HBox>
-            <HBox prefHeight="33.0" prefWidth="270.0">
-               <children>
-                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                    </content>
-                  </ScrollPane>
-               </children>
-            </HBox>
+            <ComboBox fx:id="cmbAuspiciantes" prefHeight="26.0" prefWidth="163.0" />
          </children>
       </HBox>
-      <HBox prefHeight="154.0" prefWidth="367.0">
+      <HBox fx:id="hboxPremio" prefHeight="154.0" prefWidth="367.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox prefHeight="149.0" prefWidth="571.0">
                <children>
                   <Label alignment="CENTER" contentDisplay="TOP" text="Premios:">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-               </children>
-            </HBox>
-            <HBox prefHeight="34.0" prefWidth="270.0">
-               <children>
-                  <VBox alignment="TOP_RIGHT" prefHeight="138.0" prefWidth="266.0">
+                  <VBox alignment="TOP_RIGHT" prefHeight="149.0" prefWidth="374.0">
                      <children>
-                        <TableView fx:id="listaPremios" prefHeight="114.0" prefWidth="256.0">
+                        <TableView fx:id="listaPremios" prefHeight="114.0" prefWidth="302.0">
                            <columns>
                               <TableColumn fx:id="colPos" prefWidth="61.60003739595413" text="Lugar" />
                               <TableColumn fx:id="colDescripcion" prefWidth="109.59997177124023" text="Descripción" />
-                              <TableColumn fx:id="colAuspiciante" prefWidth="84.80000305175781" text="Auspiciante" />
+                              <TableColumn fx:id="colAuspiciante" prefWidth="201.60001220703123" text="Auspiciante" />
                            </columns>
                         </TableView>
-                        <Button fx:id="botonPremio" mnemonicParsing="false" onAction="#switchToAnadirPremio" text="Añadir Premio" />
                      </children>
                   </VBox>
+                  <Button fx:id="botonPremio" alignment="CENTER" mnemonicParsing="false" onAction="#switchToAnadirPremio" prefHeight="47.0" prefWidth="98.0" text="Añadir Premio" />
                </children>
             </HBox>
          </children>

@@ -39,26 +39,27 @@ import javafx.scene.input.MouseEvent;
 public class AnadirPremioController {
     @FXML
     Alert alert = new Alert(AlertType.INFORMATION);
-    @FXML TextField txtDescripcion;
-    @FXML ComboBox<Auspiciante> cmbAuspiciante;
-    @FXML ComboBox<Posicion> cmbPosicion; 
+    @FXML TextField txtDescripcion,txtDescripcion1,txtDescripcion2;
+    @FXML ComboBox<String> cmbAuspiciante,cmbAuspiciante1,cmbAuspiciante2;
     @FXML Button botonGuardar, botonCancelar,botonRegresar;
 //int[] intArray = new int[]{ 1,2,3,4,5,6,7,8,9,10 }; 
     
 
 @FXML private void initialize(){
-    ArrayList <Auspiciante> auspiciante = new ArrayList<>();
+    ArrayList <String> auspiciante = new ArrayList<>();
     for (Auspiciante a: Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
-        auspiciante.add(a);
+        auspiciante.add(a.getEmail());
         }
     Posicion posicionArray[] = new Posicion[] {Posicion.valueOf("PRIMERO"),Posicion.valueOf("SEGUNDO"),Posicion.valueOf("TERCERO")};
     cmbAuspiciante.getItems().addAll(auspiciante);
-    cmbPosicion.getItems().addAll(posicionArray);
-    alert.setTitle("Dialogo de información");
-    alert.setHeaderText("Esto es un dialogo de información");
-    alert.setContentText("Usted ha creado un premio");
-    botonRegresar.setVisible(false);
+    cmbAuspiciante1.getItems().addAll(auspiciante);
+    cmbAuspiciante2.getItems().addAll(auspiciante);
 
+
+    botonRegresar.setVisible(false);
+    botonGuardar.setOnAction(event-> {
+        guardar(event);
+    });
     }
 
 
@@ -67,33 +68,71 @@ public class AnadirPremioController {
 
         botonGuardar.setOnMouseClicked((MouseEvent ev) ->{
 
-            Posicion posicion = cmbPosicion.getSelectionModel().getSelectedItem();
-            Auspiciante auspiciante = cmbAuspiciante.getSelectionModel().getSelectedItem();
+            String auspiciante = cmbAuspiciante.getSelectionModel().getSelectedItem();
+            Auspiciante ausSelected=null;
+            for(Auspiciante a: Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+                if(a.getEmail().equals(auspiciante)){
+                    ausSelected=a;
+                }
+            }
             String descripcion = txtDescripcion.getText();
-            Premio premio = new Premio(posicion,descripcion,auspiciante);
-            try{
-                FileWriter writer = new FileWriter(App.pathPremios,true);
-                BufferedWriter bufferedWriter = new BufferedWriter(writer);
-                
-                String linea = posicion.toString()+","+auspiciante.getNombre()+","+descripcion;
-                bufferedWriter.write(linea);
-                bufferedWriter.write("\n");
-                bufferedWriter.close();
-                alert.showAndWait();
-                botonRegresar.setVisible(true);
+            //Premio premio = new Premio(posicion,descripcion,ausSelected);
+            Premio nuevopremio = new Premio(Posicion.valueOf("PRIMERO"),descripcion,ausSelected);
+            System.out.println(nuevopremio.toString());
 
+            ArrayList<Premio> premios = new ArrayList<>();
+            premios.add(nuevopremio);
+//PARA 2DO LUGAR
+            auspiciante = cmbAuspiciante1.getSelectionModel().getSelectedItem();
+            ausSelected=null;
+            for(Auspiciante a: Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+                if(a.getEmail().equals(auspiciante)){
+                    ausSelected=a;
+                }
+            }
+            descripcion = txtDescripcion1.getText();
+            Premio nuevopremio2 = new Premio(Posicion.valueOf("SEGUNDO"),descripcion,ausSelected);
+            premios.add(nuevopremio2);
 
-            }catch(IOException e){
+            //para 3er lugar 
+
+            auspiciante = cmbAuspiciante2.getSelectionModel().getSelectedItem();
+            ausSelected=null;
+            for(Auspiciante a: Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
+                if(a.getEmail().equals(auspiciante)){
+                    ausSelected=a;
+                }
+            }
+            descripcion = txtDescripcion2.getText();
+            Premio nuevopremio3 = new Premio(Posicion.valueOf("TERCERO"),descripcion,ausSelected);
+            premios.add(nuevopremio3);
+
+            try {
+                regresarCrear(premios);
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
 
-
-
-
-
-
         });
     }
+
+
+
+    private void regresarCrear(ArrayList<Premio> premios ) throws IOException{
+        FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("crearconcurso.fxml"));//no tiene el controlador especificado
+            CrearconcursoController apre = new CrearconcursoController();
+
+            fxmlLoader.setController(apre);//se asigna el controlador
+
+            VBox root = (VBox) fxmlLoader.load();
+            apre.setTablaPremios(premios);
+
+            App.changeRoot(root);
+
+    }
+
+
     @FXML
     private void switchToMenuPrincipal() throws IOException{
         App.setRoot("menuprincipal");

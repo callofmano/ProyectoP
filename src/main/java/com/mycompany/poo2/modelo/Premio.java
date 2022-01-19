@@ -16,6 +16,12 @@ public class Premio {
     
     
 
+    public Premio(Posicion pos, String descripcion, Auspiciante auspiciante) {
+        this.pos = pos;
+        this.descripcion = descripcion;
+        this.auspiciante = auspiciante;
+    }
+
     public Posicion getPos() {
         return pos;
     }
@@ -40,11 +46,7 @@ public class Premio {
         this.auspiciante = auspiciante;
     }
 
-    public Premio(Posicion pos, String descripcion, Auspiciante auspiciante) {
-        this.pos = pos;
-        this.descripcion = descripcion;
-        this.auspiciante = auspiciante;
-    }
+
 
     @Override
     public String toString() {

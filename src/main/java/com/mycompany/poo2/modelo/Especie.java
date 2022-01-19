@@ -12,6 +12,7 @@ package com.mycompany.poo2.modelo;
  */
 public enum  Especie {
     PERRO,
-    GATO
+    GATO,
+    TODOS
     
 }
