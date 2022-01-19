@@ -112,6 +112,7 @@ public class AdministrarciudadesController {
         try {
             FileWriter writer = new FileWriter(App.pathCiudades);
             BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("id;ciudad;provincia");
             for(Ciudad c:lista ){
                 bufferedWriter.write("\n");
                 String linea = c.getCodigo() + "," + c.getNombre()+","+c.getProvincia();
