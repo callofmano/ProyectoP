@@ -36,6 +36,7 @@ public class DetalleMascotaController {
         labelDueno.setText(m.getDueno().getNombre()+" "+m.getDueno().getApellido());
         labelFecha.setText(m.getFechaNacimiento().toString());
         labelRaza.setText(m.getRaza());
+        /*
         InputStream input = null;
         try{
             input = App.class.getResource(m.getFoto()).openStream();
@@ -46,8 +47,9 @@ public class DetalleMascotaController {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+        */
     }
-
+    
     public void regresar() throws IOException{
         App.setRoot("secondary");
     }
