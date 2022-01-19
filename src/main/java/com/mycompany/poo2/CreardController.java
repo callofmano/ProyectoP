@@ -158,7 +158,7 @@ public class CreardController {
                     bufferedWriter.write("id,apellidos,nombres,direccion,telefono,ciudad,email,,,,,,,");
                     for(DuenoMascota d:lista ){
                         bufferedWriter.write("\n");
-                        String linea = d.getCi() + "," + d.getApellido()+","+d.getNombre()+","+d.getDireccion()+","+d.getCiudad().getNombre()+","+d.getEmail();
+                        String linea = d.getCi() + "," + d.getApellido()+","+d.getNombre()+","+d.getDireccion()+","+d.getTelefono()+","+d.getCiudad().getNombre()+","+d.getEmail();
                         bufferedWriter.write(linea);
                         System.out.print(linea);
                         
@@ -181,9 +181,11 @@ public class CreardController {
         txtApellidos.setText(dueno.getApellido());
         txtCi.setText(dueno.getCi());
         txtDireccion.setText(dueno.getDireccion());
+        txtTelefono.setText(dueno.getTelefono());
+        txtEmail.setText(dueno.getEmail());
         ArrayList <String> ciudades = new ArrayList<>();
-        for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
-            ciudades.add(d.getCiudad().toString());
+        for (Ciudad c:Ciudad.generarCiudad(App.pathCiudades)){
+            ciudades.add(c.getNombre());
         }
         comboCiudad.getItems().addAll(ciudades);
         comboCiudad.getSelectionModel().select(ciudades.indexOf(dueno.getCiudad().getNombre()));

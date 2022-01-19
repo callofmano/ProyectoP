@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" prefHeight="290.0" prefWidth="431.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.poo2.CreardController">
+<VBox alignment="CENTER" prefHeight="290.0" prefWidth="431.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label text="Agregar Dueño">
          <font>
@@ -35,7 +35,7 @@
                <children>
                   <TextField fx:id="txtNombre" prefHeight="25.0" prefWidth="132.0" />
                   <TextField fx:id="txtApellidos" layoutX="10.0" layoutY="10.0" />
-                  <TextField layoutX="10.0" layoutY="35.0" />
+                  <TextField fx:id="txtDireccion" layoutX="10.0" layoutY="35.0" />
                   <TextField fx:id="txtTelefono" layoutX="10.0" layoutY="10.0" />
                   <ComboBox fx:id="comboCiudad" prefHeight="25.0" prefWidth="164.0" />
                   <TextField fx:id="txtCi" layoutX="10.0" layoutY="10.0" />
