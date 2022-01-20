@@ -34,15 +34,17 @@ import javafx.scene.control.Alert;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
-
+import javafx.scene.input.MouseEvent;
+import javafx.event.ActionEvent;
 public class ConcursosController {
+    @FXML Button botonEnviarInvitaciones;
     @FXML TableView listaConcursos;
     @FXML private TableColumn<Concurso,String> colCodigo;
     @FXML private TableColumn<Concurso,String> colNombre;
     @FXML private TableColumn<Concurso,String> colFecha;
     @FXML private TableColumn<Concurso,String> colCiudad;
     @FXML private TableColumn<Concurso,Void> colOpciones;
-
+    @FXML Alert alert = new Alert(AlertType.INFORMATION);
 
 @FXML
 private void initialize (){
@@ -51,7 +53,9 @@ private void initialize (){
     colFecha.setCellValueFactory(new  PropertyValueFactory<>("fecha"));
     colCiudad.setCellValueFactory(new  PropertyValueFactory<>("ciudad"));
     listaConcursos.getItems().setAll(Concurso.cargarConcursos(App.pathConcursos));
-
+    alert.setTitle("Dialogo de información");
+    alert.setHeaderText("Esto es un dialogo de información");
+    alert.setContentText("Usted ha enviado las invitaciones");
     agregarOpciones();
     }
 
@@ -192,4 +196,17 @@ private void initialize (){
         App.setRoot("menuprincipal");
     }
 
+
+    @FXML 
+    private void enviarInvitaciones(ActionEvent event, Concurso concurso){
+    botonEnviarInvitaciones.setOnMouseClicked((MouseEvent ev) ->{
+    ArrayList<DuenoMascota> duenos = DuenoMascota.cargarDuenos(App.pathPersonas);
+    for(DuenoMascota d : duenos){
+        String correo = d.getEmail();
+        String cuerpo = "Su mascota Sr(a)" +" " +d.getNombre()+d.getApellido() +" "+"ha sido invitada al siguiente concuso:"+" "+concurso.getNombre()+"/n"+"Fecha:"+" "+concurso.getFecha()+"/n"+"Hora:"+" "+concurso.getHora()+"/n"+"Ciudad"+" "+concurso.getCiudad().toString()+"/n"+"Lugar"+" "+concurso.getLugar()+"/n"+"Premios"+" "+concurso.getPremios().toString(); 
+        Correo.enviarConGMail(correo,"Ha sido invitado al siguiente concurso"+concurso.getNombre(),cuerpo);
+    }
+    alert.showAndWait();
+    });
+    }
 }
