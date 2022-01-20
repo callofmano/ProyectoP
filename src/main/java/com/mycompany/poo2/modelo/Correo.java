@@ -1,15 +1,10 @@
-/*
+
 package com.mycompany.poo2.modelo;
 import java.util.Properties;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.*;
-/**
- *
- * @author User
- 
 public class Correo {
     
     public static void enviarConGMail(String destinatario, String asunto, String cuerpo) {
@@ -48,4 +43,3 @@ public class Correo {
     }
     
 }
-*/
