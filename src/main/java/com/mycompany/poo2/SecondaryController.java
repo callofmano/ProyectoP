@@ -48,6 +48,7 @@ public class SecondaryController {
     @FXML
     private TableColumn<Mascota,String> colEliminar;
     @FXML
+
     private void switchToPrimary() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("primary.fxml"));//no tiene el controlador especificado
             PrimaryController pc = new PrimaryController();
@@ -56,10 +57,9 @@ public class SecondaryController {
 
             FlowPane root = (FlowPane) fxmlLoader.load();
             
-            
-            
             App.changeRoot(root);
     }
+    
     @FXML
     private void switchToMenuPrincipal() throws IOException{
         App.setRoot("menuprincipal");

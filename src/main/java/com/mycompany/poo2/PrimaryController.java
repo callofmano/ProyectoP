@@ -1,8 +1,11 @@
 package com.mycompany.poo2;
 
-import java.io.IOException;
 import java.util.*;
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import com.mycompany.poo2.modelo.DuenoMascota;
 import com.mycompany.poo2.modelo.Mascota;
 import com.mycompany.poo2.modelo.Especie;
@@ -22,7 +25,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javafx.stage.FileChooser.ExtensionFilter;
 
 
 public class PrimaryController {
@@ -37,6 +42,8 @@ public class PrimaryController {
     String nacimiento;
     String raza;
     private Stage thistage;
+    @FXML
+    private Button botonBuscar;
     @FXML
     private RadioButton perro,gato;
     @FXML
@@ -61,7 +68,6 @@ public class PrimaryController {
             duenos.add(d.getNombre());
             }
         comboDueno.getItems().addAll(duenos);
-        comboFoto.getItems().addAll(fotos);
         botonRegresar.setVisible(false);
         alert.setTitle("Dialogo de información");
         alert.setHeaderText("Esto es un dialogo de información");
@@ -82,6 +88,33 @@ public class PrimaryController {
             imageCrear.setImage(image);
         } catch (Exception ex){
             ex.getMessage();
+        }
+    }
+
+    @FXML
+    private void procesaArchivo(){
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Buscar Imagen");
+            fileChooser.getExtensionFilters().addAll(
+            new ExtensionFilter("All Images","*.*"),
+            new ExtensionFilter("PNG", "*.png"),
+            new ExtensionFilter("JPG", "*.jpg"));
+
+            // Obtener la imagen seleccionada
+            File imgFile = fileChooser.showOpenDialog(null);
+
+            // Mostrar la imagen
+            if (imgFile != null){
+                Image imagen = new Image("file:" + imgFile.getAbsolutePath());
+                imageCrear.setImage(imagen);
+                //copiar la imagen
+                Path from = Paths.get(imgFile.toURI());
+                Path to = Paths.get("archivos/" + imgFile.getName());
+                Files.copy(from, to);
+            }
+        } catch (Exception e) {
+            e.getStackTrace();
         }
     }
         
@@ -215,7 +248,7 @@ public class PrimaryController {
 
 
     }
-    public void llenarCampos(Mascota m){
+    public void llenarCampos(Mascota m) throws IOException{
         txtNombre.setText(m.getNombre());
         if(m.getEspecie()==Especie.PERRO){
             perro.setSelected(true);
@@ -229,9 +262,11 @@ public class PrimaryController {
             duenos.add(d.getNombre());
             }
         comboDueno.getItems().addAll(duenos);
-       DuenoMascota d =m.getDueno();
+        DuenoMascota d =m.getDueno();
         comboDueno.getSelectionModel().select(duenos.indexOf(d.getNombre()));
-
+        InputStream input = App.class.getResource("files/"+m.getFoto()).openStream();
+            Image img = new Image(input,50,50,false,false);
+        imageCrear.setImage(img);
         botonGuardar.setOnAction(event-> {
             guardar(event,m);
         });

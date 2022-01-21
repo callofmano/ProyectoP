@@ -111,18 +111,17 @@
             </HBox>
             <HBox alignment="CENTER" layoutX="10.0" layoutY="195.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="25.0" prefWidth="163.0">
                <children>
-                  <ComboBox fx:id="comboFoto" onAction="#comboimagen" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </ComboBox>
-                  <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="45.0" text="Foto:">
+                  <Button fx:id="botonBuscar" mnemonicParsing="false" onAction="#procesaArchivo" prefHeight="42.0" prefWidth="97.0" text="Buscar Imagen" />
+                  <Label alignment="TOP_LEFT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="16.0" prefWidth="105.0" text="Foto:">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
                      <font>
                         <Font name="Arial" size="14.0" />
                      </font>
+                     <padding>
+                        <Insets right="30.0" />
+                     </padding>
                   </Label>
                </children>
                <VBox.margin>

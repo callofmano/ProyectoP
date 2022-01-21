@@ -49,7 +49,6 @@ public class CrearconcursoController {
     public static ArrayList<Premio> premiosActuales;
     public static boolean isEditing;
     @FXML ComboBox<Especie> cmbEspecie;
-    @FXML Alert alert = new Alert(AlertType.INFORMATION);
     @FXML ComboBox<Ciudad> cmbCiudad;
     @FXML ComboBox<Auspiciante> cmbAuspiciantes;
     @FXML TextField txtNombre, txtHora, txtLugar ;
@@ -58,11 +57,7 @@ public class CrearconcursoController {
     @FXML private TableColumn<Premio,String>colDescripcion;
     @FXML private TableColumn<Premio,Posicion> colPos;
     @FXML private TableColumn<Premio,String>colAuspiciante ;
-<<<<<<< HEAD
     @FXML Button botonGuardar, botonCancelar,botonPremio,botonRegresar;
-=======
-    @FXML Button botonGuardar, botonCancelar,botonPremio, botonRegresar;
->>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
     @FXML DatePicker fechaActual,fechaInscripcion,fechaCierre;
     @FXML HBox hboxPremio;
 
@@ -105,18 +100,10 @@ public class CrearconcursoController {
             auspiciantes.add(aus);
         }
         cmbAuspiciantes.getItems().addAll(auspiciantes);
-<<<<<<< HEAD
         alert.setTitle("Dialogo de información");
         alert.setHeaderText("Esto es un dialogo de información");
         alert.setContentText("Usted ha creado un concurso");
         botonRegresar.setVisible(false);
-=======
-        botonRegresar.setVisible(false);
-    
->>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
-        
-        
-
         botonPremio.setOnAction(event-> {
             try {
                 switchToAnadirPremio();
@@ -197,7 +184,6 @@ public class CrearconcursoController {
         listaPremios.getItems().setAll(p);
         }
 
-<<<<<<< HEAD
 
         @FXML
         private void switchToMenuPrincipal() throws IOException{
@@ -209,7 +195,6 @@ public class CrearconcursoController {
 
 
 
-=======
         @FXML
     private void guardar(ActionEvent event,Concurso dueno){
         if(dueno==null){
@@ -333,5 +318,5 @@ public class CrearconcursoController {
                 guardar(event,con);
             });
         }
->>>>>>> 3ba1956079290f25cf70ab7579ebb5705bbcd557
 }
+
