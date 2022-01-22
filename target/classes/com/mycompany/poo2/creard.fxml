@@ -11,7 +11,7 @@
 
 <VBox alignment="CENTER" prefHeight="290.0" prefWidth="431.0" spacing="20.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Label text="Agregar Dueño">
+        <Label fx:id="lbltitulo" text="Agregar Dueño">
          <font>
             <Font name="Arial" size="20.0" />
          </font></Label>

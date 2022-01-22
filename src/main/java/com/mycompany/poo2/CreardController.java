@@ -190,6 +190,7 @@ public class CreardController {
         txtDireccion.setText(dueno.getDireccion());
         txtTelefono.setText(dueno.getTelefono());
         txtEmail.setText(dueno.getEmail());
+        lbltitulo.setText("EDITAR DUEÑO");
         ArrayList <String> ciudades = new ArrayList<>();
         for (Ciudad c:Ciudad.generarCiudad(App.pathCiudades)){
             ciudades.add(c.getNombre());

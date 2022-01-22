@@ -5,6 +5,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import com.mycompany.poo2.modelo.DuenoMascota;
 import com.mycompany.poo2.modelo.Mascota;
@@ -13,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
@@ -52,6 +54,8 @@ public class PrimaryController {
     private ImageView imageCrear;
     @FXML
     private ComboBox <String> comboDueno, comboFoto;
+    @FXML
+    private Label labeltitulo;
     @FXML
     private TextField txtNombre, txtNacimiento, txtRaza;
     @FXML
@@ -98,8 +102,7 @@ public class PrimaryController {
             fileChooser.setTitle("Buscar Imagen");
             fileChooser.getExtensionFilters().addAll(
             new ExtensionFilter("All Images","*.*"),
-            new ExtensionFilter("PNG", "*.png"),
-            new ExtensionFilter("JPG", "*.jpg"));
+            new ExtensionFilter("PNG", "*.png"));
 
             // Obtener la imagen seleccionada
             File imgFile = fileChooser.showOpenDialog(null);
@@ -144,7 +147,7 @@ public class PrimaryController {
                 DuenoMascota dueno = null;
                 String date = txtNacimiento.getText();
                 String dates[]= date.split("-");
-                String dateEscribir= dates[2]+"/"+dates[1]+"/"+dates[0];
+                String dateEscribir= dates[0]+"-"+dates[1]+"-"+dates[2];
                 System.out.print(date);
                 LocalDate nacimiento = LocalDate.parse(date);
                 for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
@@ -152,7 +155,7 @@ public class PrimaryController {
                     dueno= d;
                     System.out.print(dueno.getCi());
                     }}
-                String foto = comboFoto.getSelectionModel().getSelectedItem();
+                String foto = "prueba.png";
                 Mascota m = new Mascota(txtNombre.getText(),txtRaza.getText().toLowerCase(),nacimiento,foto,especie,dueno);
                 try{
                     FileWriter writer = new FileWriter(App.pathMascotas,true);
@@ -172,7 +175,7 @@ public class PrimaryController {
 
         });
         }else{
-            System.out.println("prueba de EDITAR //////////////////////////////-------------------------------------------------------------------");
+            System.out.println("prueba de EDITAR ////////--------");
             
             //codigo para guardar lo editado en una variable
             Especie especie =null;
@@ -189,9 +192,9 @@ public class PrimaryController {
                 DuenoMascota dueno = null;
                 String date = txtNacimiento.getText();
                 String dates[]= date.split("-");
-                String dateEscribir= dates[2]+"/"+dates[1]+"/"+dates[0];
+                String dateEscribir= dates[0]+"-"+dates[1]+"-"+dates[2];
                 System.out.print(date);
-                String foto = comboFoto.getSelectionModel().getSelectedItem();
+                String foto = mas.getNombre() + ".png";
                 LocalDate nacimiento = LocalDate.parse(date);
                 for (DuenoMascota d: DuenoMascota.cargarDuenos(App.pathPersonas)){
                 if(d.getNombre().equals(comboDueno.getSelectionModel().getSelectedItem())){
@@ -226,7 +229,7 @@ public class PrimaryController {
                     for(Mascota mx:lista ){
                         bufferedWriter.write("\n");
                         String[] dateWriting=mx.getFechaNacimiento().toString().split("-");
-                        String linea = mx.getCodigo()+";"+mx.getNombre()+";"+mx.getEspecie().toString()+";"+mx.getRaza()+";"+dateWriting[2]+"/"+dateWriting[1]+"/"+dateWriting[0]+";"+"png"+";"+mx.getDueno().getCi();
+                        String linea = mx.getCodigo()+";"+mx.getNombre()+";"+mx.getEspecie().toString()+";"+mx.getRaza()+";"+dateWriting[2]+"/"+dateWriting[1]+"/"+dateWriting[0]+";"+mx.getFoto()+";"+mx.getDueno().getCi();
                         bufferedWriter.write(linea);
                         System.out.print(linea);
                         
@@ -250,6 +253,7 @@ public class PrimaryController {
     }
     public void llenarCampos(Mascota m) throws IOException{
         txtNombre.setText(m.getNombre());
+        labeltitulo.setText("EDITAR MASCOTAS");
         if(m.getEspecie()==Especie.PERRO){
             perro.setSelected(true);
         }else{
@@ -265,17 +269,12 @@ public class PrimaryController {
         DuenoMascota d =m.getDueno();
         comboDueno.getSelectionModel().select(duenos.indexOf(d.getNombre()));
         InputStream input = App.class.getResource("files/"+m.getFoto()).openStream();
-            Image img = new Image(input,50,50,false,false);
+        Image img = new Image(input,50,50,false,false);
         imageCrear.setImage(img);
         botonGuardar.setOnAction(event-> {
             guardar(event,m);
         });
     }
-
-    
-    
-
-
 
     @FXML
     private void switchToMenuPrincipal() throws IOException{

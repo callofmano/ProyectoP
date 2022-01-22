@@ -14,7 +14,7 @@
    <children>
       <VBox prefHeight="399.0" prefWidth="582.0">
          <children>
-            <Label text="Crear Ciudad " underline="true">
+            <Label fx:id="lbltitulo" text="Crear Ciudad " underline="true">
                <font>
                   <Font name="Arial Bold" size="24.0" />
                </font>

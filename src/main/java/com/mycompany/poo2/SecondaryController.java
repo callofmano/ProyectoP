@@ -83,9 +83,9 @@ public class SecondaryController {
 
         }catch(IOException ex){
             ex.printStackTrace();
-        }
-        
+        } 
     }
+    
     public void switchToDetalleMascota(Mascota m) throws IOException{
 
         

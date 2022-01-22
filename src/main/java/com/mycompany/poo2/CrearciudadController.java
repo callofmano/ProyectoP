@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.event.ActionEvent;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
@@ -45,6 +46,8 @@ public class CrearciudadController {
     private ComboBox <String> comboProvincia;
     @FXML
     private Button botonGuardar,botonRegresar; 
+    @FXML
+    private Label lbltitulo;
     @FXML 
     private void switchToAdministarCiudades() throws IOException {
         App.setRoot("administrarciudades");
@@ -165,6 +168,7 @@ public class CrearciudadController {
     public void llenarCampos(Ciudad ciudad){
         txtNombre.setText(ciudad.getNombre());
         txtcodigo.setText(ciudad.getCodigo());
+        lbltitulo.setText("EDITAR CIUDAD");
         ArrayList <String> provincias = new ArrayList<>();
         for (Ciudad c:Ciudad.generarCiudad(App.pathCiudades)){
             provincias.add(c.getProvincia());
