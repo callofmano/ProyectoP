@@ -134,23 +134,18 @@ private void initialize (){
                             btnEliminar.setOnAction(e ->{
                             });
                                
-                            //boton eliminar
                             Button btnInscritos = new Button("Cons.Inscritos");
                             //se agregan botones al hbox
                             hbOpciones.getChildren().addAll(btnEd,btnInscritos,btnEliminar);
                             btnInscritos.setOnAction(e ->{
 
                                 //eliminar(mas);
-                                Alert alert =  new Alert(AlertType.CONFIRMATION);
-                                alert.setTitle("MASCOTAS INSCRITAS \"" + "\"?");
-                                alert.setHeaderText("MASCOTAS INSCRITAS \"" +  "\"?");
-                                alert.setContentText("Estas son las mascotas inscritas");
-                                Optional<ButtonType> result = alert.showAndWait();
+                                mostrarInscritos(con);
                                 
                             });
                             //se ubica hbox en la celda
                             setGraphic(hbOpciones);
-                            }else{
+                            }else{                                           //******************************HBOX CUANDO EL CONCURSO YA ES VIEJO ****************
                                                                 //hbox para ubicar los botones
                             HBox hbOpciones = new HBox(5);
                             //recuperar el Concurso de la fila
@@ -168,12 +163,7 @@ private void initialize (){
                             hbOpciones.getChildren().addAll(btnInscritos,btnGanadores);
                             btnInscritos.setOnAction(e ->{
 
-                                //eliminar(mas);
-                                Alert alert =  new Alert(AlertType.CONFIRMATION);
-                                alert.setTitle("MASCOTAS INSCRITAS \"" + "\"?");
-                                alert.setHeaderText("MASCOTAS INSCRITAS \"" +  "\"?");
-                                alert.setContentText("Estas son las mascotas inscritas");
-                                Optional<ButtonType> result = alert.showAndWait();
+                                mostrarInscritos(con);
                                 
                             });
                             //se ubica hbox en la celda
@@ -208,11 +198,38 @@ private void initialize (){
     for(DuenoMascota d : duenos){
         String correo = d.getEmail();
         String cuerpo = "Su mascota Sr(a)" +" " +d.getNombre()+d.getApellido() +" "+"ha sido invitada al siguiente concuso:"+" "+concurso.getNombre()+"/n"+"Fecha:"+" "+concurso.getFecha()+"/n"+"Hora:"+" "+concurso.getHora()+"/n"+"Ciudad"+" "+concurso.getCiudad().toString()+"/n"+"Lugar"+" "+concurso.getLugar()+"/n"+"Premios"+" "+concurso.getPremios().toString(); 
-        Correo.enviarConGMail(correo,"Ha sido invitado al siguiente concurso"+concurso.getNombre(),cuerpo);
+        //Correo.enviarConGMail(correo,"Ha sido invitado al siguiente concurso"+concurso.getNombre(),cuerpo);
     }
     alert.showAndWait();
     }
 }
     });
+    }
+
+    private void mostrarInscritos(Concurso c){
+        Alert alert =  new Alert(AlertType.INFORMATION);
+        alert.setTitle("MASCOTAS INSCRITAS \"" + "\"?");
+        alert.setHeaderText("MASCOTAS INSCRITAS \"" +  "\"?");
+
+        if(c.getInscritos()==null){
+            Alert error =  new Alert(AlertType.INFORMATION);
+        error.setTitle("ERROR " + "");
+        error.setHeaderText("");
+        error.setContentText("Este concurso no tiene mascota inscritas todavia, intente mas tarde \n");
+        Optional<ButtonType> result = error.showAndWait();
+        }else{
+            ArrayList<String> masIns = new ArrayList<>();
+            for(Mascota m : c.getInscritos()){
+                masIns.add("Codigo: "+m.getCodigo()+" "+m.getNombre()+" "+m.getRaza().toString()+"\n");
+            }
+            alert.setContentText("Estas son las mascotas inscritas \n"+masIns);
+    
+            Optional<ButtonType> result = alert.showAndWait();
+
+        }
+
+
+
+
     }
 }

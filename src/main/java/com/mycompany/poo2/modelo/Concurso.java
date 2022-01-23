@@ -71,6 +71,8 @@ public class Concurso {
         this.premios = premios;
         this.dirigido = dirigido;
     }
+
+    //constructor normal con mascotas y ganadores
     public Concurso(String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores) {
         this.codigo = contador++;
         this.nombre = nombre;

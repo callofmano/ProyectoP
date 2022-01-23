@@ -196,8 +196,8 @@ public class CrearconcursoController {
 
 
         @FXML
-    private void guardar(ActionEvent event,Concurso dueno){
-        if(dueno==null){
+    private void guardar(ActionEvent event,Concurso concursoNuevo){
+        if(concursoNuevo==null){
             botonGuardar.setOnMouseClicked((MouseEvent ev) -> { 
                 String nombre = txtNombre.getText();
                 LocalDate fechaA = fechaActual.getValue();
@@ -250,22 +250,22 @@ public class CrearconcursoController {
                 String lugar = txtLugar.getText();
                 Ciudad ciudad = cmbCiudad.getSelectionModel().getSelectedItem();
                 Especie dirigiadoA = cmbEspecie.getSelectionModel().getSelectedItem();
-        
-                //public Concurso(String nombre, LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Premio> premios) {
+
+//public Concurso(int codigo,String nombre,Especie dirigido ,LocalDate fecha, String hora, LocalDate fechaInsc, LocalDate fechaCierre, Ciudad ciudad, String lugar, ArrayList<Mascota> inscritos, ArrayList<Premio> premios, ArrayList<Mascota> ganadores)            
                     ArrayList<Premio> premios = new ArrayList<>();
                     
                     //creando el objeto
         
-                    Concurso conc = new Concurso(nombre, dirigiadoA, fechaA, hora, fechaI, fechaC, ciudad, lugar, premios);
+                    Concurso conc = new Concurso(concursoNuevo.getCodigo(),nombre, dirigiadoA, fechaA, hora, fechaI, fechaC, ciudad, lugar, premios);
                     System.out.println(conc);
                 
                 ArrayList<Concurso> lista= Concurso.cargarConcursos(App.pathConcursos);
                 Boolean aux= false;
                 Concurso editable= null;
-                for(Concurso duen : lista){
-                    if(String.valueOf(duen.getCodigo()).equals(String.valueOf(dueno.getCodigo()))){
+                for(Concurso concursoRecorrido : lista){
+                    if(String.valueOf(concursoRecorrido.getCodigo()).equals(String.valueOf(concursoNuevo.getCodigo()))){
                         aux=true;
-                        editable=duen;
+                        editable=concursoRecorrido;
                     }
                 }
                 if(aux){
@@ -280,7 +280,7 @@ public class CrearconcursoController {
                     bufferedWriter.write("codigo;nombre;especie;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7");
                     for(Concurso d:lista ){
                         bufferedWriter.write("\n");
-                        String linea = d.codigo+";"+nombre+";"+dirigiadoA.toString()+";"+fechaA.toString()+";"+hora+";"+fechaI.toString()+";"+fechaC.toString()+";"+ciudad.getCodigo()+";"+lugar+";"+";"+listaPremios.getItems().toString()+";";
+                        String linea = d.codigo+";"+d.getNombre()+";"+d.getDirigido().toString()+";"+d.getFecha().toString()+";"+d.getHora()+";"+d.getFechaInsc().toString()+";"+d.getFechaCierre().toString()+";"+d.getCiudad().getCodigo()+";"+d.getLugar()+";"+" ;"+d.getPremios().toString()+"; ";
                         bufferedWriter.write(linea);
                         System.out.print(linea);
                         
@@ -305,7 +305,7 @@ public class CrearconcursoController {
             cmbEspecie.getSelectionModel().select(con.getDirigido());
             fechaActual.setValue(LocalDate.parse(con.getFecha()));
             fechaCierre.setValue(con.getFechaCierre());
-            fechaInscripcion.setValue(con.getFechaCierre());
+            fechaInscripcion.setValue(con.getFechaInsc());
             cmbCiudad.getSelectionModel().select(con.getCiudad());
             /*ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
             for(Auspiciante aus:Auspiciante.cargarAuspiciantes(App.pathAuspiciantes)){
@@ -313,6 +313,8 @@ public class CrearconcursoController {
             }
             ArrayList<Premio> premio = con.getPremios();
             cmbAuspiciantes.getSelectionModel().select();*/
+            txtHora.setText(con.getHora());
+            //listaPremios.getItems().setAll(con.getPremios());
 
             botonGuardar.setOnAction(event-> {
                 guardar(event,con);
