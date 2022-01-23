@@ -74,6 +74,8 @@ public class Auspiciante extends Persona{
     ArrayList<Auspiciante> auspiciantes = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(ruta))) {
         String linea = br.readLine();
+        
+        linea = br.readLine();
         while (linea != null) {
             
             String datos[]= linea.split(",");
@@ -84,7 +86,7 @@ public class Auspiciante extends Persona{
             String email = datos[5];
             String webpage= datos[6];
             int codigo = Integer.valueOf(datos[0]);
-            Auspiciante auspiciante= new Auspiciante(email,webpage,nombre,telefono,ciudad,apellidos);
+            Auspiciante auspiciante= new Auspiciante(email,webpage,nombre,telefono,ciudad,apellidos,Integer.parseInt(datos[0]));
             contador = codigo +1;
             auspiciantes.add(auspiciante);
             linea = br.readLine();

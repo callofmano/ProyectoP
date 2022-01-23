@@ -229,7 +229,7 @@ public class PrimaryController {
                     for(Mascota mx:lista ){
                         bufferedWriter.write("\n");
                         String[] dateWriting=mx.getFechaNacimiento().toString().split("-");
-                        String linea = mx.getCodigo()+";"+mx.getNombre()+";"+mx.getEspecie().toString()+";"+mx.getRaza()+";"+dateWriting[2]+"/"+dateWriting[1]+"/"+dateWriting[0]+";"+mx.getFoto()+";"+mx.getDueno().getCi();
+                        String linea = mx.getCodigo()+";"+mx.getNombre()+";"+mx.getEspecie().toString()+";"+mx.getRaza()+";"+dateWriting[0]+"-"+dateWriting[1]+"-"+dateWriting[2]+";"+mx.getFoto()+";"+mx.getDueno().getCi();
                         bufferedWriter.write(linea);
                         System.out.print(linea);
                         

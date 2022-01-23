@@ -96,7 +96,7 @@ public class AdministraraController {
         
             public void eliminar(Auspiciante mas){
                 ArrayList<Auspiciante> lista= new ArrayList<>();
-                lista=  mas.cargarAuspiciantes(App.pathMascotas);
+                lista=  mas.cargarAuspiciantes(App.pathAuspiciantes);
                 /*if(lista.contains(mas)){
                     lista.remove(mas);
                 }*/
@@ -109,7 +109,7 @@ public class AdministraraController {
                 lista.remove(eliminable);
                 
                 try {
-                    FileWriter writer = new FileWriter(App.pathMascotas);
+                    FileWriter writer = new FileWriter(App.pathAuspiciantes);
                     BufferedWriter bufferedWriter = new BufferedWriter(writer);
                     for(Auspiciante m:lista ){
                         bufferedWriter.write("\n");
