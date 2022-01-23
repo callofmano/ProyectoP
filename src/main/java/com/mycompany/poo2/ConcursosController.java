@@ -10,6 +10,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 import javafx.event.ActionEvent;
+
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -132,6 +134,29 @@ private void initialize (){
                             Button btnEliminar = new Button("Eliminar");
                             //System.out.print(mas.toString());
                             btnEliminar.setOnAction(e ->{
+                                Alert alert =  new Alert(AlertType.CONFIRMATION);
+                                alert.setTitle("Eliminar");
+                                alert.setHeaderText("");
+                                alert.setContentText("Seguro desea eliminar este concurso:"+mas+ "?");
+                                Optional<ButtonType> result = alert.showAndWait();
+                                if(!result.isPresent() || result.get() != ButtonType.OK) {
+                                    try {
+                                        switchToMenuPrincipal();
+                                    } catch (IOException e1) {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                    }
+                                } else {
+                                    eliminarConcurso(mas);
+                                    try {
+                                        switchToMenuPrincipal();
+                                    } catch (IOException e1) {
+                                        // TODO Auto-generated catch block
+                                        e1.printStackTrace();
+                                    }
+                                    
+                                }
+                                
                             });
                                
                             Button btnInscritos = new Button("Cons.Inscritos");
@@ -250,9 +275,39 @@ private void initialize (){
                 Optional<ButtonType> result = alert.showAndWait();
     
             }
-
-
-
-
+    }
+    private void eliminarConcurso(Concurso c){
+        ArrayList<Concurso> lista= new ArrayList<>();
+        lista=  c.cargarConcursos(App.pathConcursos);
+        /*if(lista.contains(mas)){
+            lista.remove(mas);
+        }*/
+        Concurso eliminable =null;
+        for(Concurso ms : lista){
+            if(ms.getCodigo() == c.getCodigo()){
+                eliminable = ms;
+            }
+        }
+        lista.remove(eliminable);
+        
+        try {
+            FileWriter writer = new FileWriter(App.pathConcursos);
+            BufferedWriter bufferedWriter = new BufferedWriter(writer);
+            bufferedWriter.write("codigo;nombre;especie;fecha;hora;fechainsc;fechacierre;ciudad;lugar;(inscritos)1-2-3-4-5;stringsdepremios;(ganadores)2-4-7");
+            for(Concurso d:lista ){
+                bufferedWriter.write("\n");
+                //String foto = Mascota.buscadordeFotos(m.getNombre(), m.cargarImagener("com/mycompany/poo2/files/"));
+                String linea = d.codigo+";"+d.getNombre()+";"+d.getDirigido().toString()+";"+d.getFecha().toString()+";"+d.getHora()+";"+d.getFechaInsc().toString()+";"+d.getFechaCierre().toString()+";"+d.getCiudad().getCodigo()+";"+d.getLugar()+";"+" ;"+d.getPremios().toString()+"; ";
+                System.out.print(linea);
+                bufferedWriter.write(linea);
+                
+        }
+        bufferedWriter.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+                
+            
     }
 }
