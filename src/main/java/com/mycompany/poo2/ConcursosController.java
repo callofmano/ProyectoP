@@ -156,6 +156,7 @@ private void initialize (){
                             Button btnGanadores = new Button("Cons.Ganadores");
                             //System.out.print(mas.toString());
                             btnGanadores.setOnAction(e ->{
+                                mostrarGanadores(con);
                             });
                                
                             Button btnInscritos = new Button("Cons.Inscritos");
@@ -224,9 +225,31 @@ private void initialize (){
             }
             alert.setContentText("Estas son las mascotas inscritas \n"+masIns);
     
-            Optional<ButtonType> result = alert.showAndWait();
+            Optional<ButtonType> result = alert.showAndWait();}
 
         }
+
+        private void mostrarGanadores(Concurso c){
+            Alert alert =  new Alert(AlertType.INFORMATION);
+            alert.setTitle("MASCOTAS GANADORAS");
+            alert.setHeaderText("");
+    
+            if(c.getGanadores()==null){
+                Alert error =  new Alert(AlertType.INFORMATION);
+            error.setTitle("ERROR " + "");
+            error.setHeaderText("");
+            error.setContentText("Este concurso no tiene ganadores, intente mas tarde \n");
+            Optional<ButtonType> result = error.showAndWait();
+            }else{
+                ArrayList<String> masIns = new ArrayList<>();
+                for(Mascota m : c.getGanadores()){
+                    masIns.add("Codigo: "+m.getCodigo()+" "+m.getNombre()+" "+m.getRaza().toString()+"\n");
+                }
+                alert.setContentText("Estas son las mascotas ganadoras \n"+masIns);
+        
+                Optional<ButtonType> result = alert.showAndWait();
+    
+            }
 
 
 
