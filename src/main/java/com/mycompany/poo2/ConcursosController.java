@@ -45,6 +45,7 @@ public class ConcursosController {
     @FXML private TableColumn<Concurso,String> colCiudad;
     @FXML private TableColumn<Concurso,Void> colOpciones;
     @FXML Alert alert = new Alert(AlertType.INFORMATION);
+ 
 
 @FXML
 private void initialize (){
@@ -198,8 +199,10 @@ private void initialize (){
 
 
     @FXML 
-    private void enviarInvitaciones(ActionEvent event, Concurso concurso){
+    private void enviarInvitaciones(ActionEvent event){
     botonEnviarInvitaciones.setOnMouseClicked((MouseEvent ev) ->{
+    ArrayList<Concurso> concursos = Concurso.cargarConcursos(App.pathConcursos);
+    for (Concurso concurso:concursos){
     if (concurso.getFechaCierre().compareTo(LocalDate.now())>0){
     ArrayList<DuenoMascota> duenos = DuenoMascota.cargarDuenos(App.pathPersonas);
     for(DuenoMascota d : duenos){
@@ -209,6 +212,7 @@ private void initialize (){
     }
     alert.showAndWait();
     }
+}
     });
     }
 }
