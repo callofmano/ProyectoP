@@ -200,6 +200,7 @@ private void initialize (){
     @FXML 
     private void enviarInvitaciones(ActionEvent event, Concurso concurso){
     botonEnviarInvitaciones.setOnMouseClicked((MouseEvent ev) ->{
+    if (concurso.getFechaCierre().compareTo(LocalDate.now())>0){
     ArrayList<DuenoMascota> duenos = DuenoMascota.cargarDuenos(App.pathPersonas);
     for(DuenoMascota d : duenos){
         String correo = d.getEmail();
@@ -207,6 +208,7 @@ private void initialize (){
         Correo.enviarConGMail(correo,"Ha sido invitado al siguiente concurso"+concurso.getNombre(),cuerpo);
     }
     alert.showAndWait();
+    }
     });
     }
 }
